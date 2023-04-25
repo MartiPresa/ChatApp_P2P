@@ -26,7 +26,7 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 	private ActionListener actionListenr; 
 	private JTextField txtPuerto_1;
 	private JButton btnModoEscucha;
-	private JButton btnConectar;
+	public JButton btnConectar;
 	private ControladorVistaInicial cont = null;
 	
 	
@@ -73,7 +73,6 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 		txtIp.setColumns(10);
 		
 		btnConectar = new JButton("Conectar");
-		btnConectar.setEnabled(false);
 		
 		btnConectar.setActionCommand("CONECTAR");
 		btnConectar.setBackground(new Color(245, 255, 246));
@@ -141,6 +140,10 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 		panel_1.add(panel_3);
 		
 		btnModoEscucha = new JButton("Activar modo escucha");
+		btnModoEscucha.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		panel_3.add(btnModoEscucha);
 		btnModoEscucha.setActionCommand("MODOESCUCHA");
 		btnModoEscucha.setForeground(new Color(0, 0, 0));
@@ -150,8 +153,8 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 	}
 
 
-	public int getPuerto() {
-		return Integer.parseInt(this.txtPuerto.getText());
+	public String getPuerto() {
+		return this.txtPuerto.getText();
 	}
 
 	public String getIP() {
@@ -177,11 +180,15 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 		
 	}
 	
-	public void keyReleased(KeyEvent e) {
-        boolean condition = this.getPuerto()> 1000 && this.getIP().length()>0;
-        this.btnConectar.setEnabled(condition);
-    }
+//	public void keyReleased(KeyEvent e) {
+//        boolean condition = this.getPuerto()> 1000 && this.getIP().length()>0;
+//        this.btnConectar.setEnabled(condition);
+//    }
 	
+	public void mostrarVentana(boolean cond) {
+		this.setVisible(cond);
+		
+	}
 
 	
 	

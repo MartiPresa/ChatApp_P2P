@@ -88,7 +88,7 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha {
 		);
 		contentPane.setLayout(gl_contentPane);
 		//JOptionPane.showConfirmDialog(null, "El tiempo de espera ha finalizado. Desea intentar nuevamente?");
-		JOptionPane.showConfirmDialog(null, "El usuario con puerto 1234 e IP 192.158.1.38 busca comunicarse. Desea conectarse?");
+		//JOptionPane.showConfirmDialog(null, "El usuario con puerto 1234 e IP 192.158.1.38 busca comunicarse. Desea conectarse?");
 	}
 
 
@@ -97,8 +97,8 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha {
 		
 	}
 
-	public void mostrarVentana() {
-		this.setVisible(true);
+	public void mostrarVentana(boolean cond) {
+		this.setVisible(cond);
 		
 	}
 

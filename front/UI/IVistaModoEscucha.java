@@ -7,6 +7,6 @@ public interface IVistaModoEscucha
 	void ConfirmarConexion();
 	void Temporizador();
 	void addActionListener(ActionListener actionListener);
-	void mostrarVentana();
+	void mostrarVentana(boolean cond);
 	
 }

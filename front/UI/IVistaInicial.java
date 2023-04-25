@@ -8,10 +8,10 @@ public interface IVistaInicial
 {
 	//void ActivarModoEscucha();
 	//void EstablecerConexion();
-	int getPuerto();
+	String getPuerto();
 	String getIP();
 	void addActionListener(ActionListener actionListener);
-	void mostrarVentana();
 	void setVisibleBtn();
+	void mostrarVentana(boolean cond);
 	
 }

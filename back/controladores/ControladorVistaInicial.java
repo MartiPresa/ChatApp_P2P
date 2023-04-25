@@ -25,11 +25,17 @@ public class ControladorVistaInicial implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
+		
         if (comando.equalsIgnoreCase("CONECTAR")) {
-        	 
+        	boolean condition = this.vistaInicial.getPuerto()!= "puerto" && this.vistaInicial.getIP().length()>5;
+    
+        	
             try {
             	System.out.println("Enre");
-				conexion.conectar(this.vistaInicial.getIP(), this.vistaInicial.getPuerto());
+            	if (condition == false)
+            		JOptionPane.showMessageDialog(null, "El puerto o el IP son invalidos");
+            	else
+            		conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
 			} catch (NumberFormatException e1) {
 				System.out.println("e1");
 			} catch (UnknownHostException e1) {
@@ -37,12 +43,11 @@ public class ControladorVistaInicial implements ActionListener{
 			} catch (IOException e1) {
 				JOptionPane.showMessageDialog(null, "Lo siento. El receptor no se encuentra en modo escucha.");
 			}
-            
         }
         else if (comando.equalsIgnoreCase("MODOESCUCHA")) {
             IVistaModoEscucha vistaEscucha = new vistaEspera();
-          
-            vistaEscucha.mostrarVentana();
+            this.vistaInicial.mostrarVentana(false);
+            vistaEscucha.mostrarVentana(true);
         }
         
 		
