@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controladores.ControladorVistaInicial;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class vistaInicial extends JFrame implements IVistaInicial{
 
@@ -71,6 +73,8 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 		txtIp.setColumns(10);
 		
 		btnConectar = new JButton("Conectar");
+		btnConectar.setEnabled(false);
+		
 		btnConectar.setActionCommand("CONECTAR");
 		btnConectar.setBackground(new Color(245, 255, 246));
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -146,8 +150,8 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 	}
 
 
-	public String getPuerto() {
-		return this.txtPuerto.getText();
+	public int getPuerto() {
+		return Integer.parseInt(this.txtPuerto.getText());
 	}
 
 	public String getIP() {
@@ -167,6 +171,16 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 		
 	}
 
+
+	public void setVisibleBtn() {
+		this.btnModoEscucha.setVisible(true);
+		
+	}
+	
+	public void keyReleased(KeyEvent e) {
+        boolean condition = this.getPuerto()> 1000 && this.getIP().length()>0;
+        this.btnConectar.setEnabled(condition);
+    }
 	
 
 	

@@ -8,6 +8,8 @@ import java.net.UnknownHostException;
 import javax.swing.JOptionPane;
 
 import UI.IVistaInicial;
+import UI.IVistaModoEscucha;
+import UI.vistaEspera;
 import back.Conexion;
 
 public class ControladorVistaInicial implements ActionListener{
@@ -19,26 +21,28 @@ public class ControladorVistaInicial implements ActionListener{
         this.vistaInicial = vista;
         this.vistaInicial.addActionListener(this);
         
-    }
+    } 
 
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
         if (comando.equalsIgnoreCase("CONECTAR")) {
-            System.out.println("Enre");
+        	 
             try {
-				conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
+            	System.out.println("Enre");
+				conexion.conectar(this.vistaInicial.getIP(), this.vistaInicial.getPuerto());
 			} catch (NumberFormatException e1) {
-		 		
+				System.out.println("e1");
 			} catch (UnknownHostException e1) {
-				JOptionPane.showMessageDialog(null, "Lo siento. El receptor no se encuentra en modo escucha.");
-			} catch (IOException e1) {
 				
+			} catch (IOException e1) {
+				JOptionPane.showMessageDialog(null, "Lo siento. El receptor no se encuentra en modo escucha.");
 			}
-            //vistaInicial.getContentPane().setVisible(true);
-            //cl.show(contentPane, ventana.getVistaModificaMozoAdmin());
+            
         }
         else if (comando.equalsIgnoreCase("MODOESCUCHA")) {
-            //cl.show(contentPane, ventana.getVistaAltaMozo());
+            IVistaModoEscucha vistaEscucha = new vistaEspera();
+          
+            vistaEscucha.mostrarVentana();
         }
         
 		
