@@ -12,16 +12,19 @@ import UI.IVistaModoEscucha;
 import UI.vistaEspera;
 import back.Conexion;
 import back.Emisor;
+import back.Receptor;
 
 public class ControladorVistaInicial implements ActionListener{
 	
 	private IVistaInicial vistaInicial = null;
     private Emisor conexion= null;
-
+    private Receptor conexionReceptor = null;
+    
     public ControladorVistaInicial(IVistaInicial vista) {
         this.vistaInicial = vista;
         this.vistaInicial.addActionListener(this);
-        
+        this.conexion = new Conexion();
+        this.conexionReceptor = new Conexion();
     } 
 
 	public void actionPerformed(ActionEvent e) {
@@ -37,7 +40,7 @@ public class ControladorVistaInicial implements ActionListener{
             		JOptionPane.showMessageDialog(null, "El puerto o el IP son invalidos");
             	else {
             		System.out.println("Conexion exitosa\n");
-            		conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
+            		this.conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
             		System.out.println("Conexion exitosa x2\n");
             	}
             		
@@ -46,14 +49,16 @@ public class ControladorVistaInicial implements ActionListener{
 			} catch (UnknownHostException e1) {
 				
 			} catch (IOException e1) {
-				JOptionPane.showMessageDialog(null, "Lo siento. El receptor no se encuentra en modo escucha.");
+				//JOptionPane.showMessageDialog(null, "Lo siento. El receptor no se encuentra en modo escucha.");
+				JOptionPane.showMessageDialog(null, e1.getMessage());
 			}
         }
         else if (comando.equalsIgnoreCase("MODOESCUCHA")) {
         	if (!this.vistaInicial.getPuertoEscucha().equals("puerto")) {
         		IVistaModoEscucha vistaEscucha = new vistaEspera();
         		this.vistaInicial.mostrarVentana(false);
-        		vistaEscucha.mostrarVentana(true);        		
+        		vistaEscucha.mostrarVentana(true);  
+        		this.conexionReceptor.Conectar(Integer.parseInt(this.vistaInicial.getPuertoEscucha()));
         	}
         	else
         		JOptionPane.showMessageDialog(null, "El puerto es invalido");
