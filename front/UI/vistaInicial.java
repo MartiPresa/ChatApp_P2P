@@ -190,6 +190,11 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 		
 	}
 
+
+	public String getPuertoEscucha() {
+		return this.txtPuerto_1.getText();
+	}
+
 	
 	
 

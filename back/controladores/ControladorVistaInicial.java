@@ -11,11 +11,12 @@ import UI.IVistaInicial;
 import UI.IVistaModoEscucha;
 import UI.vistaEspera;
 import back.Conexion;
+import back.Emisor;
 
 public class ControladorVistaInicial implements ActionListener{
 	
 	private IVistaInicial vistaInicial = null;
-    private Conexion conexion= new Conexion();
+    private Emisor conexion= new Conexion();
 
     public ControladorVistaInicial(IVistaInicial vista) {
         this.vistaInicial = vista;
@@ -27,8 +28,8 @@ public class ControladorVistaInicial implements ActionListener{
 		String comando = e.getActionCommand();
 		
         if (comando.equalsIgnoreCase("CONECTAR")) {
-        	boolean condition = this.vistaInicial.getPuerto()!= "puerto" && this.vistaInicial.getIP().length()>5;
-    
+        	boolean condition = !this.vistaInicial.getPuerto().equals("puerto")&& this.vistaInicial.getIP().length()>5;
+   
         	
             try {
             	System.out.println("Enre");
@@ -45,9 +46,13 @@ public class ControladorVistaInicial implements ActionListener{
 			}
         }
         else if (comando.equalsIgnoreCase("MODOESCUCHA")) {
-            IVistaModoEscucha vistaEscucha = new vistaEspera();
-            this.vistaInicial.mostrarVentana(false);
-            vistaEscucha.mostrarVentana(true);
+        	if (!this.vistaInicial.getPuertoEscucha().equals("puerto")) {
+        		IVistaModoEscucha vistaEscucha = new vistaEspera();
+        		this.vistaInicial.mostrarVentana(false);
+        		vistaEscucha.mostrarVentana(true);        		
+        	}
+        	else
+        		JOptionPane.showMessageDialog(null, "El puerto es invalido");
         }
         
 		

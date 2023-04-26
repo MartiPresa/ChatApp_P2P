@@ -1,6 +1,7 @@
 package UI;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
@@ -8,13 +9,14 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
-public class vistaEspera extends JFrame implements IVistaModoEscucha {
+import controladores.ControladorModoEscucha;
+
+public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionListener {
 
 	private JPanel contentPane;
 	private ActionListener actionListener =null;
@@ -89,12 +91,13 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha {
 		contentPane.setLayout(gl_contentPane);
 		//JOptionPane.showConfirmDialog(null, "El tiempo de espera ha finalizado. Desea intentar nuevamente?");
 		//JOptionPane.showConfirmDialog(null, "El usuario con puerto 1234 e IP 192.158.1.38 busca comunicarse. Desea conectarse?");
+		ControladorModoEscucha cont = new ControladorModoEscucha(this);
 	}
 
 
 	public void addActionListener(ActionListener actionListener) {
 		this.actionListener = actionListener; 
-		
+		this.btnVolver.addActionListener(actionListener);
 	}
 
 	public void mostrarVentana(boolean cond) {
@@ -108,6 +111,11 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha {
 	}
 
 	public void Temporizador() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

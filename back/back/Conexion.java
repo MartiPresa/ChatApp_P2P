@@ -8,18 +8,28 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import UI.IVistaChat;
+
 public class Conexion implements Receptor, Emisor
 {
+ 
+	private IVistaChat vistaChat = null;
+	
+	
 
+	public Conexion(IVistaChat vistaChat) {
+		super();
+		this.vistaChat = vistaChat;
+	}
 
 	public void conectar(String IP, int puerto) throws UnknownHostException, IOException {
 		 Socket socket = new Socket(IP,puerto);
          PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
          BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        // out.println(jTextArea1.getText()); //el método println(...) escribe el MENSAJE por el canal out enviándolo al proceso Servidor.
-         //out.close(); //creo que nosotros no deberiamos cerrar el canal ya que permitirai nuevas conexiones en este lapso
+   //      out.println(jTextArea1.getText()); //el método println(...) escribe el MENSAJE por el canal out enviándolo al proceso Servidor.
+         out.close(); //creo que nosotros no deberiamos cerrar el canal ya que permitirai nuevas conexiones en este lapso
          socket.close(); //o es este?
-       //  jTextArea1.setText("");
+    //     jTextArea1.setText("");
 		
 	}
 

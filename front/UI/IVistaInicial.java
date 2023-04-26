@@ -13,5 +13,6 @@ public interface IVistaInicial
 	void addActionListener(ActionListener actionListener);
 	void setVisibleBtn();
 	void mostrarVentana(boolean cond);
+	String getPuertoEscucha();
 	
 }
