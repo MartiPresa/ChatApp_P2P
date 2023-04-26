@@ -16,7 +16,7 @@ import back.Emisor;
 public class ControladorVistaInicial implements ActionListener{
 	
 	private IVistaInicial vistaInicial = null;
-    private Emisor conexion= new Conexion();
+    private Emisor conexion= null;
 
     public ControladorVistaInicial(IVistaInicial vista) {
         this.vistaInicial = vista;
@@ -31,19 +31,19 @@ public class ControladorVistaInicial implements ActionListener{
         	boolean condition = !this.vistaInicial.getPuerto().equals("puerto")&& this.vistaInicial.getIP().length()>5;
    
         	
-            try {
-            	System.out.println("Enre");
-            	if (condition == false)
-            		JOptionPane.showMessageDialog(null, "El puerto o el IP son invalidos");
-            	else
-            		conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
-			} catch (NumberFormatException e1) {
-				System.out.println("e1");
-			} catch (UnknownHostException e1) {
-				
-			} catch (IOException e1) {
-				JOptionPane.showMessageDialog(null, "Lo siento. El receptor no se encuentra en modo escucha.");
-			}
+//            try {
+//            	System.out.println("Enre");
+//            	if (condition == false)
+//            		JOptionPane.showMessageDialog(null, "El puerto o el IP son invalidos");
+//            	else
+//            		conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
+//			} catch (NumberFormatException e1) {
+//				System.out.println("e1");
+//			} catch (UnknownHostException e1) {
+//				
+//			} catch (IOException e1) {
+//				JOptionPane.showMessageDialog(null, "Lo siento. El receptor no se encuentra en modo escucha.");
+//			}
         }
         else if (comando.equalsIgnoreCase("MODOESCUCHA")) {
         	if (!this.vistaInicial.getPuertoEscucha().equals("puerto")) {

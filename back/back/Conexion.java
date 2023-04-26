@@ -46,7 +46,7 @@ public class Conexion implements Receptor, Emisor
                         PrintWriter out = new PrintWriter(soc.getOutputStream(), true); //puede ser new DataOutputStream(soc.getOutputStream())
                         BufferedReader in = new BufferedReader(new InputStreamReader(soc.getInputStream())); //puede ser new DataInputStream(soc.getInputStream())
 
-                        String msg = in.readLine(); //puede ser in.readUTF();
+                        String msg = in.readLine(); 
      //                   jTextArea1.append(msg + "\n"); //es como el system out
                     }
 
