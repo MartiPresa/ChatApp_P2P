@@ -55,7 +55,7 @@ public class VistaChatEmisor extends JFrame implements IVistaChat {
 			}
 		});
 
-		RecibirMensajee();
+		//RecibirMensajee();
 //		try {
 //			
 //			s= new Socket ("127.0.0.1", 1234);
@@ -132,7 +132,7 @@ public class VistaChatEmisor extends JFrame implements IVistaChat {
 		// JOptionPane.showInternalMessageDialog(null, "Uno de los participantes ha
 		// abandonado el chat. Ha sido desconectado.");
 		ControladorVistaChat cont = new ControladorVistaChat(this);
-		//this.RecibirMensaje();
+		this.RecibirMensaje();
 	}
 
 	public void EnviarMensaje(String Mensaje) {

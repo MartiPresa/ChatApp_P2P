@@ -167,23 +167,6 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 		this.btnModoEscucha.addActionListener(actionListener);
 		this.actionListenr = actionListener;
 	}
-
-
-	public void mostrarVentana() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	public void setVisibleBtn() {
-		this.btnModoEscucha.setVisible(true);
-		
-	}
-	
-//	public void keyReleased(KeyEvent e) {
-//        boolean condition = this.getPuerto()> 1000 && this.getIP().length()>0;
-//        this.btnConectar.setEnabled(condition);
-//    }
 	
 	public void mostrarVentana(boolean cond) {
 		this.setVisible(cond);
@@ -193,6 +176,12 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 
 	public String getPuertoEscucha() {
 		return this.txtPuerto_1.getText();
+	}
+
+
+	public void setVisibleBtn() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

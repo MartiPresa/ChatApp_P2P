@@ -153,7 +153,7 @@ public class VistaChatReceptor extends JFrame implements IVistaChatReceptor{
 		//JOptionPane.showInternalMessageDialog(null, "Uno de los participantes ha abandonado el chat. Ha sido desconectado.");
 		ControladorVistaChatReceptor cont = new ControladorVistaChatReceptor(this);
 		//this.RecibirMensaje();
-	}
+	} 
 
 	public void EnviarMensaje(String Mensaje) {
 		// TODO Auto-generated method stub
