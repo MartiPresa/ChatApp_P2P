@@ -35,8 +35,9 @@ public class Conexion implements Receptor, Emisor
 	
 	public void conectar(String IP, int puerto) throws UnknownHostException, IOException {
 		System.out.println("1\n");
-		 Socket socket = new Socket(IP,puerto);
-		 
+		 //Socket socket = new Socket(IP,puerto);
+		this.socket = new Socket(IP,puerto);
+			
 		 System.out.println("1\n");
          this.out = new PrintWriter(socket.getOutputStream(), true);
          System.out.println("2\n");
@@ -51,38 +52,80 @@ public class Conexion implements Receptor, Emisor
 		
 	}
 
-	//RECEPTOR
-	public void Conectar(final int puerto) {
-		
-		System.out.println("Antes del run\n");
-		new Thread() {
-			
-			public void run() {
-				System.out.println("despues del run\n");
-                try {
-                	ServerSocket serverSocket = new ServerSocket(puerto);
- //                   jTextArea1.append("Esperando conexiones en puerto " + direccionIP.getText() + "\n");
-
-                    while (true) { //como siempre esta atento a escuchar peticiones del cliente
-                    	System.out.println("conexion\n");
-                    	Socket socket = serverSocket.accept(); //accept() se queda a la espera, no continua el codigo. socket es el socket del cliente.
-                    	System.out.println("socketserver\n");
-                    	PrintWriter out = new PrintWriter(socket.getOutputStream(), true); //puede ser new DataOutputStream(soc.getOutputStream())
-                    	BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream())); //puede ser new DataInputStream(soc.getInputStream())
-
-                        String msg = in.readLine(); 
-     //                   jTextArea1.append(msg + "\n"); //es como el system out
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
- //                   jTextArea1.append(e.getMessage() + "\n");
-                }
-  //              jTextArea1.append("fin");
-
-            }
-        }.start();
-		
-	}
+//	//RECEPTOR
+//	public void Conectar(final int puerto) {
+//		
+//		System.out.println("Antes del run\n");
+//		
+//		new Thread() {
+//			
+//			
+//
+//			public void run() {
+//				System.out.println("despues del run\n");
+//                try {
+//                	ServerSocket serverSocket = new ServerSocket(puerto);
+// //                   jTextArea1.append("Esperando conexiones en puerto " + direccionIP.getText() + "\n");
+//
+//                    while (true) { //como siempre esta atento a escuchar peticiones del cliente
+//                    	System.out.println("conexion\n");
+//                    	Socket socket = serverSocket.accept(); //accept() se queda a la espera, no continua el codigo. socket es el socket del cliente.
+//                    	System.out.println("socketserver\n");
+//                    	PrintWriter out = new PrintWriter(socket.getOutputStream(), true); //puede ser new DataOutputStream(soc.getOutputStream())
+//                    	BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream())); //puede ser new DataInputStream(soc.getInputStream())
+//
+//                        String msg = in.readLine(); 
+//     //                   jTextArea1.append(msg + "\n"); //es como el system out
+//                    }
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+// //                   jTextArea1.append(e.getMessage() + "\n");
+//                }
+//  //              jTextArea1.append("fin");
+//
+//            }
+//        }.start();
+//		
+//	}
 	
+	//RECEPTOR
+		public void Conectar(final int puerto) {
+			
+			System.out.println("Antes del run\n");
+			
+			//new Thread() {
+				
+		
+				//public void run() {
+
+	                try {
+	                	ServerSocket serverSocket = new ServerSocket(puerto);
+	 //                   jTextArea1.append("Esperando conexiones en puerto " + direccionIP.getText() + "\n");
+
+	                    while (true) { //como siempre esta atento a escuchar peticiones del cliente
+	                    	System.out.println("conexion\n");
+	                    	Socket socket = serverSocket.accept(); //accept() se queda a la espera, no continua el codigo. socket es el socket del cliente.
+	                    	System.out.println("socketserver\n");
+	                    	PrintWriter out = new PrintWriter(socket.getOutputStream(), true); //puede ser new DataOutputStream(soc.getOutputStream())
+	                    	BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream())); //puede ser new DataInputStream(soc.getInputStream())
+
+	                        String msg = in.readLine(); 
+	     //                   jTextArea1.append(msg + "\n"); //es como el system out
+	                    }
+
+	                } catch (Exception e) {
+	                    e.printStackTrace();
+	 //                   jTextArea1.append(e.getMessage() + "\n");
+	                }
+	  //              jTextArea1.append("fin");
+
+	           // }
+	     //   }.start();
+			
+		}
+	
+		public Socket getsocket() {
+			return this.socket;
+		}
 }

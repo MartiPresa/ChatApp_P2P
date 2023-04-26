@@ -7,8 +7,10 @@ import java.net.UnknownHostException;
 
 import javax.swing.JOptionPane;
 
+import UI.IVistaChat;
 import UI.IVistaInicial;
 import UI.IVistaModoEscucha;
+import UI.vistaChat;
 import UI.vistaEspera;
 import back.Conexion;
 import back.Emisor;
@@ -42,6 +44,9 @@ public class ControladorVistaInicial implements ActionListener{
             		System.out.println("Conexion exitosa\n");
             		this.conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
             		System.out.println("Conexion exitosa x2\n");
+            		this.vistaInicial.mostrarVentana(false);
+            		IVistaChat vistaChat = new vistaChat();
+            		vistaChat.mostrarVentana(true);
             	}
             		
 			} catch (NumberFormatException e1) {
@@ -59,6 +64,10 @@ public class ControladorVistaInicial implements ActionListener{
         		this.vistaInicial.mostrarVentana(false);
         		vistaEscucha.mostrarVentana(true);  
         		this.conexionReceptor.Conectar(Integer.parseInt(this.vistaInicial.getPuertoEscucha()));
+        		
+        		vistaEscucha.mostrarVentana(false);
+        		IVistaChat vistaChat = new vistaChat();
+        		vistaChat.mostrarVentana(true);
         	}
         	else
         		JOptionPane.showMessageDialog(null, "El puerto es invalido");

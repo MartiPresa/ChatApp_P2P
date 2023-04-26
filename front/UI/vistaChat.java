@@ -163,4 +163,8 @@ public class vistaChat extends JFrame implements IVistaChat{
 	public JTextField getTxtIngreseTextoAqui() {
 		return txtIngreseTextoAqui;
 	}
+
+	public void setText(String text) {
+		// TODO Auto-generated method stub
+	}
 }
