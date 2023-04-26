@@ -60,29 +60,31 @@ public class VistaChatReceptor extends JFrame implements IVistaChatReceptor{
 			} 
 		});
 		
+		RecibirMensajeeee ();
 		//System.out.println("Holax2");
-		String msgin = "";
-		try {
-			
-			ss = new ServerSocket (1234); 
-			//System.out.println("Holax1");
-			s = ss.accept(); //server will accept the connections
-			//System.out.println("Holax2");
-			din= new DataInputStream(s.getInputStream());
-			don = new DataOutputStream(s.getOutputStream());
-			
-			while (!msgin.equals("exit")) {
-				msgin = din.readUTF();
-				textArea.setText(textArea.getText().trim()+msgin+"\n");
-			}
-			
-		}catch(Exception e) {}
+//		String msgin = "";
+//		try {
+//			
+//			ss = new ServerSocket (1234); 
+//			//System.out.println("Holax1");
+//			s = ss.accept(); //server will accept the connections
+//			//System.out.println("Holax2");
+//			din= new DataInputStream(s.getInputStream());
+//			don = new DataOutputStream(s.getOutputStream());
+//			
+//			while (!msgin.equals("exit")) {
+//				msgin = din.readUTF();
+//				textArea.setText(textArea.getText().trim()+msgin+"\n");
+//			}
+//			
+//		}catch(Exception e) {}
 	}
 
 	/**
 	 * Create the frame.
 	 */
 	public VistaChatReceptor() {
+		//this.RecibirMensaje();
 		setTitle("CHAT EN TIEMPO REAL");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -150,15 +152,51 @@ public class VistaChatReceptor extends JFrame implements IVistaChatReceptor{
 		contentPane.setLayout(gl_contentPane);
 		//JOptionPane.showInternalMessageDialog(null, "Uno de los participantes ha abandonado el chat. Ha sido desconectado.");
 		ControladorVistaChatReceptor cont = new ControladorVistaChatReceptor(this);
+		//this.RecibirMensaje();
 	}
 
 	public void EnviarMensaje(String Mensaje) {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public static void RecibirMensajeeee() {
+		String msgin = "";
+		try {
+			
+			ss = new ServerSocket (1234); 
+			//System.out.println("Holax1");
+			s = ss.accept(); //server will accept the connections
+			//System.out.println("Holax2");
+			din= new DataInputStream(s.getInputStream());
+			don = new DataOutputStream(s.getOutputStream());
+			
+			while (!msgin.equals("exit")) {
+				msgin = din.readUTF();
+				textArea.setText(textArea.getText().trim()+msgin+"\n");
+			}
+			
+		}catch(Exception e) {}
+		
+	}
 
-	public void RecibirMensaje(String Mensaje) {
-		// TODO Auto-generated method stub
+	public void RecibirMensaje() {
+		String msgin = "";
+		try {
+			
+			ss = new ServerSocket (1234); 
+			//System.out.println("Holax1");
+			s = ss.accept(); //server will accept the connections
+			//System.out.println("Holax2");
+			din= new DataInputStream(s.getInputStream());
+			don = new DataOutputStream(s.getOutputStream());
+			
+			while (!msgin.equals("exit")) {
+				msgin = din.readUTF();
+				textArea.setText(textArea.getText().trim()+msgin+"\n");
+			}
+			
+		}catch(Exception e) {}
 		
 	}
 

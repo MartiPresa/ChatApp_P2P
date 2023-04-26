@@ -7,8 +7,12 @@ import java.net.UnknownHostException;
 
 import javax.swing.JOptionPane;
 
+import UI.IVistaChat;
+import UI.IVistaChatReceptor;
 import UI.IVistaInicial;
 import UI.IVistaModoEscucha;
+import UI.VistaChatEmisor;
+import UI.VistaChatReceptor;
 import UI.vistaEspera;
 import back.Conexion;
 import back.Emisor;
@@ -39,7 +43,6 @@ public class ControladorVistaInicial implements ActionListener{
             	if (condition == false)
             		JOptionPane.showMessageDialog(null, "El puerto o el IP son invalidos");
             	else {
-            		System.out.println("Conexion exitosa\n");
             		this.conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
             		System.out.println("Conexion exitosa x2\n");
             	}
@@ -52,6 +55,8 @@ public class ControladorVistaInicial implements ActionListener{
 				//JOptionPane.showMessageDialog(null, "Lo siento. El receptor no se encuentra en modo escucha.");
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 			}
+            IVistaChat vistaChatE = new VistaChatEmisor();
+            //vistaChatE.mostrarVentana(true);
         }
         else if (comando.equalsIgnoreCase("MODOESCUCHA")) {
         	if (!this.vistaInicial.getPuertoEscucha().equals("puerto")) {
@@ -59,6 +64,9 @@ public class ControladorVistaInicial implements ActionListener{
         		this.vistaInicial.mostrarVentana(false);
         		vistaEscucha.mostrarVentana(true);  
         		this.conexionReceptor.Conectar(Integer.parseInt(this.vistaInicial.getPuertoEscucha()));
+        		IVistaChatReceptor vistaChatR = new VistaChatReceptor();
+        		//vistaChatR.mostrarVentana(true);
+        		vistaChatR.RecibirMensaje();
         	}
         	else
         		JOptionPane.showMessageDialog(null, "El puerto es invalido");

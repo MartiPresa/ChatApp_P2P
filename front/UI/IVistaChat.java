@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 public interface IVistaChat 
 {
 	void EnviarMensaje(String Mensaje);
-	void RecibirMensaje(String Mensaje);
+	void RecibirMensaje();
 	void AbandonarChat();
 	void addActionListener(ActionListener actionListener);
 	void mostrarVentana(boolean cond);

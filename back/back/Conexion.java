@@ -54,7 +54,7 @@ public class Conexion implements Receptor, Emisor
 	//RECEPTOR
 	public void Conectar(final int puerto) {
 		
-		System.out.println("Antes del run\n");
+		System.out.println("Antes del run\n");  
 		new Thread() {
 			
 			public void run() {

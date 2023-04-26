@@ -27,7 +27,7 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
 
-public class VistaChatEmisor extends JFrame implements IVistaChat{
+public class VistaChatEmisor extends JFrame implements IVistaChat {
 
 	private JPanel contentPane;
 	private JTextField txtIngreseTextoAqui;
@@ -37,9 +37,9 @@ public class VistaChatEmisor extends JFrame implements IVistaChat{
 	private JScrollPane jScrollPane1;
 	private static JTextArea textArea;
 	static Socket s;
-    static DataInputStream din;
-    static DataOutputStream don;
-	
+	static DataInputStream din;
+	static DataOutputStream don;
+
 	/**
 	 * Launch the application.
 	 */
@@ -52,21 +52,22 @@ public class VistaChatEmisor extends JFrame implements IVistaChat{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			} 
-		});
-		
-		try {
-			
-			s= new Socket ("127.0.0.1", 1234);
-			System.out.println("Hola");
-			din = new DataInputStream(s.getInputStream());
-			don = new DataOutputStream(s.getOutputStream());
-			String msgin = "";
-			while(!msgin.equals("exit")) {
-				msgin = din.readUTF();
-				textArea.setText(textArea.getText().trim()+msgin+"\n");
 			}
-		}catch(Exception e2) {}
+		});
+
+		RecibirMensajee();
+//		try {
+//			
+//			s= new Socket ("127.0.0.1", 1234);
+//			System.out.println("Hola");
+//			din = new DataInputStream(s.getInputStream());
+//			don = new DataOutputStream(s.getOutputStream());
+//			String msgin = "";
+//			while(!msgin.equals("exit")) {
+//				msgin = din.readUTF();
+//				textArea.setText(textArea.getText().trim()+msgin+"\n");
+//			}
+//		}catch(Exception e2) {}
 	}
 
 	/**
@@ -80,10 +81,10 @@ public class VistaChatEmisor extends JFrame implements IVistaChat{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setVisible(true);
 		setContentPane(contentPane);
-		
+
 		JLabel lblNewLabel = new JLabel("Ya estan en contacto! ");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
-		
+
 		btnAbandonar = new JButton("Abandonar chat");
 		btnAbandonar.setActionCommand("ABANDONAR");
 		btnAbandonar.setBackground(new Color(95, 95, 95));
@@ -92,85 +93,105 @@ public class VistaChatEmisor extends JFrame implements IVistaChat{
 			}
 		});
 		btnAbandonar.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
-		
+
 		txtIngreseTextoAqui = new JTextField();
 		txtIngreseTextoAqui.setText("Ingrese texto aquí");
 		txtIngreseTextoAqui.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		txtIngreseTextoAqui.setForeground(new Color(127, 127, 127));
 		txtIngreseTextoAqui.setColumns(10);
-		
+
 		btnEnviar = new JButton("Enviar");
 		btnEnviar.setActionCommand("ENVIAR");
-		
+
 		jScrollPane1 = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-					.addGap(14)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE)
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup().addGap(14)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createSequentialGroup().addGap(142).addComponent(lblNewLabel)
+										.addGap(29).addComponent(btnAbandonar))
+								.addGroup(gl_contentPane.createSequentialGroup().addComponent(txtIngreseTextoAqui)
+										.addGap(18).addComponent(btnEnviar)))
+						.addContainerGap()));
+		gl_contentPane
+				.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(142)
-							.addComponent(lblNewLabel)
-							.addGap(29)
-							.addComponent(btnAbandonar))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(txtIngreseTextoAqui)
-							.addGap(18)
-							.addComponent(btnEnviar)))
-					.addContainerGap())
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnAbandonar)
-						.addComponent(lblNewLabel))
-					.addGap(18)
-					.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtIngreseTextoAqui, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnEnviar)))
-		);
-		
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(btnAbandonar).addComponent(lblNewLabel))
+								.addGap(18).addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+										.addComponent(txtIngreseTextoAqui, GroupLayout.PREFERRED_SIZE,
+												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnEnviar))));
+
 		textArea = new JTextArea();
 		jScrollPane1.setViewportView(textArea);
 		contentPane.setLayout(gl_contentPane);
-		//JOptionPane.showInternalMessageDialog(null, "Uno de los participantes ha abandonado el chat. Ha sido desconectado.");
+		// JOptionPane.showInternalMessageDialog(null, "Uno de los participantes ha
+		// abandonado el chat. Ha sido desconectado.");
 		ControladorVistaChat cont = new ControladorVistaChat(this);
+		//this.RecibirMensaje();
 	}
 
 	public void EnviarMensaje(String Mensaje) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	public void RecibirMensaje(String Mensaje) {
-		// TODO Auto-generated method stub
-		
+	public void RecibirMensaje() {
+		try {
+
+			s = new Socket("127.0.0.1", 1234);
+			System.out.println("Hola");
+			din = new DataInputStream(s.getInputStream());
+			don = new DataOutputStream(s.getOutputStream());
+			String msgin = "";
+			while (!msgin.equals("exit")) {
+				msgin = din.readUTF();
+				textArea.setText(textArea.getText().trim() + msgin + "\n");
+			}
+		} catch (Exception e2) {
+		}
+
+	}
+	
+	public static void RecibirMensajee() {
+		try {
+
+			s = new Socket("127.0.0.1", 1234);
+			System.out.println("Hola");
+			din = new DataInputStream(s.getInputStream());
+			don = new DataOutputStream(s.getOutputStream());
+			String msgin = "";
+			while (!msgin.equals("exit")) {
+				msgin = din.readUTF();
+				textArea.setText(textArea.getText().trim() + msgin + "\n");
+			}
+		} catch (Exception e2) {
+		}
+
 	}
 
 	public void AbandonarChat() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void addActionListener(ActionListener actionListener) {
 		this.actionListener = actionListener;
 		this.btnAbandonar.addActionListener(actionListener);
 		this.btnEnviar.addActionListener(actionListener);
-		
+
 	}
 
 	public void mostrarVentana(boolean cond) {
 		this.setEnabled(cond);
-		
+
 	}
 
-
-	public  Socket getS() {
+	public Socket getS() {
 		return s;
 	}
 
@@ -178,7 +199,7 @@ public class VistaChatEmisor extends JFrame implements IVistaChat{
 		return din;
 	}
 
-	public  DataOutputStream getDon() {
+	public DataOutputStream getDon() {
 		return don;
 	}
 
