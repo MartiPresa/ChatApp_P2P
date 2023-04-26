@@ -10,13 +10,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public interface IVistaChat 
+public interface IVistaChatReceptor 
 {
 	void EnviarMensaje(String Mensaje);
 	void RecibirMensaje(String Mensaje);
 	void AbandonarChat();
 	void addActionListener(ActionListener actionListener);
 	void mostrarVentana(boolean cond);
+	
+	public  ServerSocket getSs() ;
 
 	public Socket getS() ;
 

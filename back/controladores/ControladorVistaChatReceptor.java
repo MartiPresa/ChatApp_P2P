@@ -2,24 +2,21 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
 
 import UI.IVistaChat;
+import UI.IVistaChatReceptor;
 import UI.IVistaInicial;
 import UI.vistaInicial;
 import back.Conexion;
 import back.Emisor;
 
-public class ControladorVistaChat implements ActionListener {
+public class ControladorVistaChatReceptor implements ActionListener {
 
-	private IVistaChat vistaChat = null;
+	private IVistaChatReceptor vistaChat = null;
     private Emisor conexion= null;
     
 
-    public ControladorVistaChat(IVistaChat vista) {
+    public ControladorVistaChatReceptor(IVistaChatReceptor vista) {
         this.vistaChat = vista;
         this.vistaChat.addActionListener(this);
         

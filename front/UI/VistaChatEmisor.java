@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -23,7 +27,7 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
 
-public class vistaChat extends JFrame implements IVistaChat{
+public class VistaChatEmisor extends JFrame implements IVistaChat{
 
 	private JPanel contentPane;
 	private JTextField txtIngreseTextoAqui;
@@ -31,7 +35,10 @@ public class vistaChat extends JFrame implements IVistaChat{
 	private JButton btnAbandonar;
 	private JButton btnEnviar;
 	private JScrollPane jScrollPane1;
-	private JTextArea textArea;
+	private static JTextArea textArea;
+	static Socket s;
+    static DataInputStream din;
+    static DataOutputStream don;
 	
 	/**
 	 * Launch the application.
@@ -40,19 +47,32 @@ public class vistaChat extends JFrame implements IVistaChat{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					vistaChat frame = new vistaChat();
+					VistaChatEmisor frame = new VistaChatEmisor();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}
+			} 
 		});
+		
+		try {
+			
+			s= new Socket ("127.0.0.1", 1234);
+			System.out.println("Hola");
+			din = new DataInputStream(s.getInputStream());
+			don = new DataOutputStream(s.getOutputStream());
+			String msgin = "";
+			while(!msgin.equals("exit")) {
+				msgin = din.readUTF();
+				textArea.setText(textArea.getText().trim()+msgin+"\n");
+			}
+		}catch(Exception e2) {}
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public vistaChat() {
+	public VistaChatEmisor() {
 		setTitle("CHAT EN TIEMPO REAL");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -150,7 +170,17 @@ public class vistaChat extends JFrame implements IVistaChat{
 	}
 
 
-	
+	public  Socket getS() {
+		return s;
+	}
+
+	public DataInputStream getDin() {
+		return din;
+	}
+
+	public  DataOutputStream getDon() {
+		return don;
+	}
 
 	public JTextArea getTextArea() {
 		return textArea;
@@ -163,4 +193,36 @@ public class vistaChat extends JFrame implements IVistaChat{
 	public JTextField getTxtIngreseTextoAqui() {
 		return txtIngreseTextoAqui;
 	}
+
+//	public JTextArea getTextArea() {
+//		return textArea;
+//	}
+//
+//	public JScrollPane getjScrollPane1() {
+//		return jScrollPane1;
+//	}
+//
+//	public JTextField getTxtIngreseTextoAqui() {
+//		return txtIngreseTextoAqui;
+//	}
+//
+//	public ServerSocket getSs() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	public Socket getS() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	public DataInputStream getDin() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	public DataOutputStream getDon() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 }
