@@ -32,4 +32,7 @@ public class MessageManager {
 		}
     }
     
+    Socket getSocket() {
+    	return this.s;
+    }
 }

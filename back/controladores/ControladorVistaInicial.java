@@ -54,6 +54,7 @@ public class ControladorVistaInicial implements ActionListener{
             		
             		vistaChat.setConexion(conexion);
             		vistaChat.mostrarVentana(true);
+            		conexion.recibirMensajes();	       // crea un thread para poder recibir mensajes por el socket     	
             	}
             		
 			} catch (NumberFormatException e1) {

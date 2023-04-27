@@ -115,10 +115,11 @@ public class Conexion
 		                DataInputStream dis = new DataInputStream(s.getInputStream());
 		                DataOutputStream dos = new DataOutputStream(s.getOutputStream());
 		                  
-		                System.out.println("Assigning new thread for this client");
+		                //System.out.println("Assigning new thread for this client");
 		  
 		                // create a new thread object
-		                System.out.println("Vista"+this.vistaChat);
+		                //System.out.println("Vista"+this.vistaChat);
+		                this.messageManager = new MessageManager(s, dis, dos,this.vistaChat);
 		                Thread t = new ConectionHandler(s, dis, dos,this.vistaChat);
 		                // Invoking the start() method
 		                t.start();
@@ -164,6 +165,22 @@ public class Conexion
 //			
 //		}
 	
+		public void recibirMensajes() {
+			Socket s = this.messageManager.getSocket();
+			DataInputStream dis = null;
+			DataOutputStream dos = null;
+			try {
+				dis = new DataInputStream(s.getInputStream());
+				dos = new DataOutputStream(s.getOutputStream());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            
+            Thread t = new ConectionHandler(s, dis, dos,this.vistaChat);
+            // Invoking the start() method
+            t.start();
+		}
 		public void conectar(String IP, int puerto) throws UnknownHostException, IOException {
 			
 			Socket s = new Socket(IP,puerto);
