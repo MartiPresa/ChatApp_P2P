@@ -169,6 +169,7 @@ public class Conexion
 			DataInputStream dis = new DataInputStream(s.getInputStream());
             DataOutputStream dos = new DataOutputStream(s.getOutputStream());
 			
+            System.out.println("mensajito manager");
 			this.messageManager = new MessageManager(s,dis,dos,this.vistaChat);
 			
 			//this.socket = new Socket(IP,puerto);
@@ -179,14 +180,14 @@ public class Conexion
 	   //      out.println(jTextArea1.getText()); //el método println(...) escribe el MENSAJE por el canal out enviándolo al proceso Servidor.
 	       //  out.close(); //creo que nosotros no deberiamos cerrar el canal ya que permitirai nuevas conexiones en este lapso
 	         
-	         s.close(); //o es este?
+	         //s.close(); //o es este?
 	    //     jTextArea1.setText("");
 			
 		}
 		
 		
 		public MessageManager getMessageManager() {
-			return messageManager;
+			return this.messageManager;
 		}
 
 //		public void setMm(MessageManager mm) {
