@@ -32,7 +32,7 @@ public class ConectionHandler extends Thread{
 				System.out.println("xd");
 				recibido = dis.readUTF();
 				System.out.println(recibido);
-				this.vista.setText(recibido);
+				this.vista.getTextArea().setText(this.vista.getTextArea().getText()+"\n"+recibido);
 				
 				//HAY QUE MATAR ESTE THREAD EN QUE MOMENTO?
 			} catch (IOException e) {

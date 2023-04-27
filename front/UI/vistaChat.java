@@ -62,7 +62,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		this.setVisible(true);
+		//this.setVisible(true);
 		setContentPane(contentPane);
 		
 		JLabel lblNewLabel = new JLabel("Ya estan en contacto! ");

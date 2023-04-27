@@ -23,7 +23,7 @@ public class ControladorVistaChat implements ActionListener {
     public ControladorVistaChat(IVistaChat vista) {
         this.vistaChat = vista;
         this.vistaChat.addActionListener(this);
-        //this.conexion = vista.getConexion();
+        this.conexion = vista.getConexion();
         //this.conexionReceptor = new Conexion(vista);
     } 
 
