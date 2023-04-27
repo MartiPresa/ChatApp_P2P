@@ -24,7 +24,8 @@ public class MessageManager {
     
     public void enviaMensaje(String mensaje) {
     	try {
-			this.dos.writeBytes(mensaje);
+    		System.out.println(mensaje);
+			this.dos.writeUTF(mensaje);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
