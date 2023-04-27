@@ -43,7 +43,8 @@ public class ControladorVistaInicial implements ActionListener{
             	else {
             		System.out.println("Conexion exitosa\n");
             		this.conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
-            		System.out.println("Conexion exitosa x2\n");
+            		System.out.println("Conexion exitosa x2\n"+conexion.getMessageManager());
+            		
             		this.vistaInicial.mostrarVentana(false);
             		IVistaChat vistaChat = new vistaChat();
             		vistaChat.setConexion(conexion);

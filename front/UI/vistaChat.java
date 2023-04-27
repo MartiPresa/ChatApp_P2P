@@ -34,7 +34,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 	private JButton btnEnviar;
 	private JScrollPane jScrollPane1;
 	private JTextArea textArea;
-	private Conexion conexion;
+	private Conexion conexion = null;
 	
 	/**
 	 * Launch the application.
@@ -172,5 +172,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 		this.conexion = conexion;
 	}
 	
-	
+	public Conexion getConexion() {
+		return this.conexion;
+	}
 }

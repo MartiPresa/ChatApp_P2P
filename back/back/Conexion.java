@@ -169,7 +169,6 @@ public class Conexion
 			DataInputStream dis = new DataInputStream(s.getInputStream());
             DataOutputStream dos = new DataOutputStream(s.getOutputStream());
 			
-            System.out.println("mensajito manager");
 			this.messageManager = new MessageManager(s,dis,dos,this.vistaChat);
 			
 			//this.socket = new Socket(IP,puerto);

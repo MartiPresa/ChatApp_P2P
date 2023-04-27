@@ -21,4 +21,5 @@ public interface IVistaChat
 	JTextField getTxtIngreseTextoAqui();
 	void setText(String text);
 	void setConexion(Conexion conexion);
+	Conexion getConexion();
 }
