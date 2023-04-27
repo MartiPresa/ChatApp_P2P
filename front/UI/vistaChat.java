@@ -18,6 +18,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import back.Conexion;
 import back.MessageManager;
 import controladores.ControladorVistaChat;
 import javax.swing.JTextArea;
@@ -33,6 +34,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 	private JButton btnEnviar;
 	private JScrollPane jScrollPane1;
 	private JTextArea textArea;
+	private Conexion conexion;
 	
 	/**
 	 * Launch the application.
@@ -166,8 +168,9 @@ public class vistaChat extends JFrame implements IVistaChat{
 		// TODO Auto-generated method stub
 	}
 
-	public MessageManager getMm() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setConexion(Conexion conexion) {
+		this.conexion = conexion;
 	}
+	
+	
 }
