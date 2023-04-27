@@ -41,14 +41,15 @@ public class ControladorVistaInicial implements ActionListener{
             	else {
             		System.out.println("Conexion exitosa\n");
             		
-//            		IVistaChat vistaChat = new vistaChat();
-//            		conexion.setVista(vistaChat);
-            		
-            		this.conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
-            		System.out.println("Conexion exitosa x2\n"+conexion.getMessageManager());
-            		
             		IVistaChat vistaChat = new vistaChat();
             		conexion.setVista(vistaChat);
+            		
+            		this.conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
+            		
+            		System.out.println("Conexion exitosa x2\n"+conexion.getMessageManager());
+            		
+//            		IVistaChat vistaChat = new vistaChat();
+//            		conexion.setVista(vistaChat);
             		this.vistaInicial.mostrarVentana(false);
             		
             		vistaChat.setConexion(conexion);
@@ -70,10 +71,12 @@ public class ControladorVistaInicial implements ActionListener{
         		this.vistaInicial.mostrarVentana(false);
         		vistaEscucha.mostrarVentana(true);  
         		try {
-        			//System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n");
-					//this.conexionReceptor.Conectar(Integer.parseInt(this.vistaInicial.getPuertoEscucha()));
+        			IVistaChat vistaChat = new vistaChat();
+            		conexion.setVista(vistaChat);
 					this.conexion.Conectar(Integer.parseInt(this.vistaInicial.getPuertoEscucha()));
-					//System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n");
+					vistaEscucha.mostrarVentana(false);
+					vistaChat.mostrarVentana(true);
+					
 				} catch (NumberFormatException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -82,9 +85,9 @@ public class ControladorVistaInicial implements ActionListener{
 					e1.printStackTrace();
 				}
         		
-        		vistaEscucha.mostrarVentana(false);
-        		IVistaChat vistaChat = new vistaChat();
-        		vistaChat.mostrarVentana(true);
+        		//vistaEscucha.mostrarVentana(false);
+        		//IVistaChat vistaChat = new vistaChat();
+        		//vistaChat.mostrarVentana(true);
         	}
         	else
         		JOptionPane.showMessageDialog(null, "El puerto es invalido");

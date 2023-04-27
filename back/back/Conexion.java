@@ -118,7 +118,7 @@ public class Conexion
 		                System.out.println("Assigning new thread for this client");
 		  
 		                // create a new thread object
-		                //System.out.println("Vista"+this.vistaChat);
+		                System.out.println("Vista"+this.vistaChat);
 		                Thread t = new ConectionHandler(s, dis, dos,this.vistaChat);
 		                // Invoking the start() method
 		                t.start();
