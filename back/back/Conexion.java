@@ -23,7 +23,7 @@ public class Conexion
 	private MessageManager messageManager;
 	
 	public Conexion() {}
-	
+	 
 	public Conexion(IVistaChat vistaChat) {
 		super();
 		this.vistaChat = vistaChat;
@@ -193,6 +193,10 @@ public class Conexion
 //			this.messageManager = mm;
 //		}
 
+		public void setVista(IVistaChat v) {
+			this.vistaChat = v;
+		}
+		 
 		public Socket getsocket() {
 			return this.socket;
 		}

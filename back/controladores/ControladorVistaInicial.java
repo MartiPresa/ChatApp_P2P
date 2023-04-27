@@ -20,13 +20,11 @@ public class ControladorVistaInicial implements ActionListener{
 	
 	private IVistaInicial vistaInicial = null;
     private Conexion conexion= null;
-    private Conexion conexionReceptor = null;
     
     public ControladorVistaInicial(IVistaInicial vista) {
         this.vistaInicial = vista;
         this.vistaInicial.addActionListener(this);
         this.conexion = new Conexion();
-        this.conexionReceptor = new Conexion();
     } 
 
 	public void actionPerformed(ActionEvent e) {
@@ -47,6 +45,7 @@ public class ControladorVistaInicial implements ActionListener{
             		
             		this.vistaInicial.mostrarVentana(false);
             		IVistaChat vistaChat = new vistaChat();
+            		conexion.setVista(vistaChat);
             		vistaChat.setConexion(conexion);
             		vistaChat.mostrarVentana(true);
             	}
