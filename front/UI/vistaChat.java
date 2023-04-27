@@ -34,7 +34,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 	private JButton btnEnviar;
 	private JScrollPane jScrollPane1;
 	private JTextArea textArea;
-	private Conexion conexion = null;
+	//private Conexion conexion = null;
 	private ControladorVistaChat cont;
 	
 	/**
@@ -171,14 +171,14 @@ public class vistaChat extends JFrame implements IVistaChat{
 		// TODO Auto-generated method stub
 	}
 
-	public void setConexion(Conexion conexion) {
-		this.conexion = conexion;
-		this.cont.setConexion(conexion);
-	}
-	
-	public Conexion getConexion() {
-		return this.conexion;
-	}
+//	public void setConexion(Conexion conexion) {
+//		this.conexion = conexion;
+//		this.cont.setConexion(conexion);
+//	}
+//	
+//	public Conexion getConexion() {
+//		return this.conexion;
+//	}
 
 	public ControladorVistaChat getCont() {
 		return cont;

@@ -22,8 +22,8 @@ public interface IVistaChat
 	JScrollPane getjScrollPane1();
 	JTextField getTxtIngreseTextoAqui();
 	void setText(String text);
-	void setConexion(Conexion conexion);
-	Conexion getConexion();
+//	void setConexion(Conexion conexion);
+//	Conexion getConexion();
 	ControladorVistaChat getCont();
 	JButton getBtnEnviar() ;
 }
