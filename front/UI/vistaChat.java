@@ -35,6 +35,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 	private JScrollPane jScrollPane1;
 	private JTextArea textArea;
 	private Conexion conexion = null;
+	private ControladorVistaChat cont;
 	
 	/**
 	 * Launch the application.
@@ -74,6 +75,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		
 		btnAbandonar.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		
 		txtIngreseTextoAqui = new JTextField();
@@ -122,7 +124,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 		jScrollPane1.setViewportView(textArea);
 		contentPane.setLayout(gl_contentPane);
 		//JOptionPane.showInternalMessageDialog(null, "Uno de los participantes ha abandonado el chat. Ha sido desconectado.");
-		ControladorVistaChat cont = new ControladorVistaChat(this);
+		cont = new ControladorVistaChat(this);
 	}
 
 	public void EnviarMensaje(String Mensaje) {
@@ -170,6 +172,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 
 	public void setConexion(Conexion conexion) {
 		this.conexion = conexion;
+		this.cont.setConexion(conexion);
 	}
 	
 	public Conexion getConexion() {
