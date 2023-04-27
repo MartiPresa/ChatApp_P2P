@@ -23,7 +23,7 @@ public class ControladorVistaChat implements ActionListener {
     public ControladorVistaChat(IVistaChat vista) {
         this.vistaChat = vista;
         this.vistaChat.addActionListener(this);
-        this.conexion = vista.getConexion();
+        //this.conexion = vista.getConexion();
         //this.conexionReceptor = new Conexion(vista);
     } 
 
@@ -40,6 +40,7 @@ public class ControladorVistaChat implements ActionListener {
         	if (comando.equalsIgnoreCase("ENVIAR")) {
         		//System.out.println("mensajito manager"+conexion.getMessageManager());
         		this.conexion.getMessageManager().enviaMensaje(this.vistaChat.getTxtIngreseTextoAqui().getText());
+        		this.vistaChat.getTxtIngreseTextoAqui().setText("");
 //        		try {
 //        			Socket socket = this.conexionReceptor.getsocket();
 //                    PrintWriter out = new PrintWriter(socket.getOutputStream(), true);

@@ -56,7 +56,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 	/**
 	 * Create the frame.
 	 */
-	public vistaChat() {
+	public vistaChat() { 
 		setTitle("CHAT EN TIEMPO REAL");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -121,6 +121,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 		);
 		
 		textArea = new JTextArea();
+		textArea.setEditable(false);
 		jScrollPane1.setViewportView(textArea);
 		contentPane.setLayout(gl_contentPane);
 		//JOptionPane.showInternalMessageDialog(null, "Uno de los participantes ha abandonado el chat. Ha sido desconectado.");
@@ -178,4 +179,14 @@ public class vistaChat extends JFrame implements IVistaChat{
 	public Conexion getConexion() {
 		return this.conexion;
 	}
+
+	public ControladorVistaChat getCont() {
+		return cont;
+	}
+
+	public JButton getBtnEnviar() {
+		return btnEnviar;
+	}
+	
+	
 }

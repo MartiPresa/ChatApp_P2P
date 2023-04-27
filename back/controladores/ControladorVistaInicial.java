@@ -50,9 +50,10 @@ public class ControladorVistaInicial implements ActionListener{
             		
 //            		IVistaChat vistaChat = new vistaChat();
 //            		conexion.setVista(vistaChat);
-            		this.vistaInicial.mostrarVentana(false);
+            		this.vistaInicial.mostrarVentana(false);  
             		
-            		vistaChat.setConexion(conexion);
+            		//vistaChat.setConexion(conexion);
+            		vistaChat.getCont().setConexion(conexion);
             		vistaChat.mostrarVentana(true);
             		conexion.recibirMensajes();	       // crea un thread para poder recibir mensajes por el socket     	
             	}
@@ -75,7 +76,8 @@ public class ControladorVistaInicial implements ActionListener{
         			IVistaChat vistaChat = new vistaChat();
             		conexion.setVista(vistaChat);
 					this.conexion.Conectar(Integer.parseInt(this.vistaInicial.getPuertoEscucha()));
-					vistaChat.setConexion(conexion);
+					vistaChat.getCont().setConexion(conexion);
+					//vistaChat.setConexion(conexion);
 					vistaEscucha.mostrarVentana(false);
 					vistaChat.mostrarVentana(true);
 					
