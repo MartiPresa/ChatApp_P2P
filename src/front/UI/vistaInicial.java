@@ -1,4 +1,4 @@
-package UI;
+package front.UI;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -14,7 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controladores.ControladorVistaInicial;
+import back.controladores.ControladorVistaInicial;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 

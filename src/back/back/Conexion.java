@@ -1,4 +1,4 @@
-package back;
+package back.back;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -10,7 +10,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import UI.IVistaChat;
+import front.UI.IVistaChat;
+
 
 public class Conexion 
 {

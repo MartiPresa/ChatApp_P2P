@@ -1,13 +1,12 @@
-package controladores;
+package back.controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import UI.IVistaInicial;
-import UI.IVistaModoEscucha;
-import UI.vistaInicial;
-import back.Conexion;
-import back.Receptor;
+import front.UI.IVistaModoEscucha;
+import front.UI.IVistaInicial;
+import front.UI.vistaInicial;
+
 
 public class ControladorModoEscucha implements ActionListener {
 

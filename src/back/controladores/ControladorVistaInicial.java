@@ -1,4 +1,4 @@
-package controladores;
+package back.controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,14 +7,13 @@ import java.net.UnknownHostException;
 
 import javax.swing.JOptionPane;
 
-import UI.IVistaChat;
-import UI.IVistaInicial;
-import UI.IVistaModoEscucha;
-import UI.vistaChat;
-import UI.vistaEspera;
-import back.Conexion;
-import back.Emisor;
-import back.Receptor;
+import back.back.Conexion;
+import front.UI.IVistaInicial;
+import front.UI.IVistaChat;
+import front.UI.IVistaModoEscucha;
+import front.UI.vistaChat;
+import front.UI.vistaEspera;
+
 
 public class ControladorVistaInicial implements ActionListener{
 	

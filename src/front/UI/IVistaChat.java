@@ -1,4 +1,4 @@
-package UI;
+package front.UI;
 
 import java.awt.event.ActionListener;
 
@@ -6,8 +6,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import back.Conexion;
-import back.MessageManager;
+import back.back.Conexion;
+
 
 public interface IVistaChat 
 {

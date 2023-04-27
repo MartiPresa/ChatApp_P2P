@@ -1,4 +1,4 @@
-package UI;
+package front.UI;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,7 @@ import javax.swing.JProgressBar;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
-import controladores.ControladorModoEscucha;
+import back.controladores.ControladorModoEscucha;
 
 public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionListener {
 

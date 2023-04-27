@@ -1,11 +1,12 @@
-package back;
+package back.back;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-import UI.IVistaChat;
+import front.UI.IVistaChat;
+
 
 public class MessageManager {
 	

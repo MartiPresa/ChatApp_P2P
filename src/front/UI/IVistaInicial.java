@@ -1,4 +1,4 @@
-package UI;
+package front.UI;
 
 import java.awt.event.ActionListener;
 

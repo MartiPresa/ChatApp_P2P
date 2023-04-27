@@ -1,4 +1,4 @@
-package UI;
+package front.UI;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -18,9 +18,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import back.Conexion;
-import back.MessageManager;
-import controladores.ControladorVistaChat;
+import back.back.Conexion;
+import back.controladores.ControladorVistaChat;
+
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
