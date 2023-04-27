@@ -31,7 +31,7 @@ public class ConectionHandler extends Thread{
 			try {
 				System.out.println("xd");
 				recibido = dis.readUTF();
-				System.out.println("xd");
+				System.out.println(recibido);
 				this.vista.setText(recibido);
 				
 				//HAY QUE MATAR ESTE THREAD EN QUE MOMENTO?
