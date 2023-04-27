@@ -75,6 +75,7 @@ public class ControladorVistaInicial implements ActionListener{
         			IVistaChat vistaChat = new vistaChat();
             		conexion.setVista(vistaChat);
 					this.conexion.Conectar(Integer.parseInt(this.vistaInicial.getPuertoEscucha()));
+					vistaChat.setConexion(conexion);
 					vistaEscucha.mostrarVentana(false);
 					vistaChat.mostrarVentana(true);
 					
