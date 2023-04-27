@@ -26,7 +26,7 @@ public class ConectionHandler extends Thread{
 		String recibido;
 		super.run();
 	
-		//while(true) {
+		while(true) {
 			
 			try {
 				System.out.println("xd");
@@ -39,7 +39,7 @@ public class ConectionHandler extends Thread{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		//}
+		}
 		
 //	   this.dis.close();
 //	   this.dos.close();
