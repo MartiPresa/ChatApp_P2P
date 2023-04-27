@@ -17,14 +17,14 @@ import back.Receptor;
 public class ControladorVistaChat implements ActionListener {
 
 	private IVistaChat vistaChat = null;
-    private Emisor conexion= null;
-    private Receptor conexionReceptor = null;
+    private Conexion conexion= null;
+    //private Conexion conexionReceptor = null;
     
     public ControladorVistaChat(IVistaChat vista) {
         this.vistaChat = vista;
         this.vistaChat.addActionListener(this);
         this.conexion = new Conexion (vista);
-        this.conexionReceptor = new Conexion();
+        //this.conexionReceptor = new Conexion(vista);
     } 
 
 	public void actionPerformed(ActionEvent e) {
@@ -38,6 +38,7 @@ public class ControladorVistaChat implements ActionListener {
         }
         else {
         	if (comando.equalsIgnoreCase("ENVIAR")) {
+        		this.conexion.getMessageManager().enviaMensaje(this.vistaChat.getTxtIngreseTextoAqui().getText());
 //        		try {
 //        			Socket socket = this.conexionReceptor.getsocket();
 //                    PrintWriter out = new PrintWriter(socket.getOutputStream(), true);

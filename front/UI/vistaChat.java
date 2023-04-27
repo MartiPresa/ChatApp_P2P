@@ -18,6 +18,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import back.MessageManager;
 import controladores.ControladorVistaChat;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
@@ -149,9 +150,6 @@ public class vistaChat extends JFrame implements IVistaChat{
 		
 	}
 
-
-	
-
 	public JTextArea getTextArea() {
 		return textArea;
 	}
@@ -166,5 +164,10 @@ public class vistaChat extends JFrame implements IVistaChat{
 
 	public void setText(String text) {
 		// TODO Auto-generated method stub
+	}
+
+	public MessageManager getMm() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

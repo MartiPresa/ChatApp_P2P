@@ -6,6 +6,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import back.MessageManager;
+
 public interface IVistaChat 
 {
 	void EnviarMensaje(String Mensaje);
@@ -17,4 +19,5 @@ public interface IVistaChat
 	JScrollPane getjScrollPane1();
 	JTextField getTxtIngreseTextoAqui();
 	void setText(String text);
+	MessageManager getMm();
 }

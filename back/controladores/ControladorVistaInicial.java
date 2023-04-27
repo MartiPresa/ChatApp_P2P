@@ -19,8 +19,8 @@ import back.Receptor;
 public class ControladorVistaInicial implements ActionListener{
 	
 	private IVistaInicial vistaInicial = null;
-    private Emisor conexion= null;
-    private Receptor conexionReceptor = null;
+    private Conexion conexion= null;
+    private Conexion conexionReceptor = null;
     
     public ControladorVistaInicial(IVistaInicial vista) {
         this.vistaInicial = vista;
@@ -63,7 +63,18 @@ public class ControladorVistaInicial implements ActionListener{
         		IVistaModoEscucha vistaEscucha = new vistaEspera();
         		this.vistaInicial.mostrarVentana(false);
         		vistaEscucha.mostrarVentana(true);  
-        		this.conexionReceptor.Conectar(Integer.parseInt(this.vistaInicial.getPuertoEscucha()));
+        		try {
+        			System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n");
+					//this.conexionReceptor.Conectar(Integer.parseInt(this.vistaInicial.getPuertoEscucha()));
+					this.conexion.Conectar(Integer.parseInt(this.vistaInicial.getPuertoEscucha()));
+					System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n");
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
         		
         		vistaEscucha.mostrarVentana(false);
         		IVistaChat vistaChat = new vistaChat();
