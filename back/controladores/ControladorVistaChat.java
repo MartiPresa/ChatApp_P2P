@@ -31,10 +31,14 @@ public class ControladorVistaChat implements ActionListener {
 		String comando = e.getActionCommand();
 		
         if (comando.equalsIgnoreCase("ABANDONAR")) {
-        	//this.vistaChat.mostrarVentana(false);
+        	
+        	//this.vistaChat.getTextArea().setText(this.vistaChat.getTextArea().getText()+"\n"+"El otro usuario se desconecto.\n");
+        	this.conexion.getMessageManager().enviaMensaje("El otro usuario se desconecto.\n");
+        	this.conexion.getConectionHandler().terminarRecibirMensajes();
+        	this.vistaChat.mostrarVentana(false);
         	IVistaInicial vistaInicial = new vistaInicial();
         	vistaInicial.mostrarVentana(true);
-        	this.conexion.getConectionHandler().terminarRecibirMensajes();
+        	
         	//Socket closeeeee
         }
         else {

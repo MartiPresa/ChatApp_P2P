@@ -23,13 +23,15 @@ public class MessageManager {
 	}
     
     public void enviaMensaje(String mensaje) {
-    	try {
-    		System.out.println(mensaje);
-			this.dos.writeUTF(mensaje);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	
+    	if(this.s.isClosed() != true) {
+    		try {
+    			this.dos.writeUTF(mensaje);
+    		} catch (IOException e) {
+    			e.printStackTrace();
+    		}
+    	}
+    	
     }
     
     Socket getSocket() {

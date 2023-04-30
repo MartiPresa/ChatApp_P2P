@@ -151,8 +151,8 @@ public class vistaChat extends JFrame implements IVistaChat{
 	}
 
 	public void mostrarVentana(boolean cond) {
+		this.setVisible(cond);
 		this.setEnabled(cond);
-		
 	}
 
 	public JTextArea getTextArea() {
