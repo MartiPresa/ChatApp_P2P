@@ -21,6 +21,7 @@ public class Conexion
 	private PrintWriter out;
 	private BufferedReader in;
 	private MessageManager messageManager;
+	private ConectionHandler conectionHandler = null;
 	
 	public Conexion() {}
 	 
@@ -120,9 +121,11 @@ public class Conexion
 		                // create a new thread object
 		                //System.out.println("Vista"+this.vistaChat);
 		                this.messageManager = new MessageManager(s, dis, dos,this.vistaChat);
-		                Thread t = new ConectionHandler(s, dis, dos,this.vistaChat);
+		                //Thread t = new ConectionHandler(s, dis, dos,this.vistaChat);
+		                //t.start();
+		                this.conectionHandler = new ConectionHandler(s, dis, dos,this.vistaChat);
 		                // Invoking the start() method
-		                t.start();
+		                this.conectionHandler.start();
 		                  
 		            }
 		            catch (Exception e){
@@ -177,10 +180,14 @@ public class Conexion
 				e.printStackTrace();
 			}
             
-            Thread t = new ConectionHandler(s, dis, dos,this.vistaChat);
+//            Thread t = new ConectionHandler(s, dis, dos,this.vistaChat);
+//            // Invoking the start() method
+//            t.start();
+            this.conectionHandler = new ConectionHandler(s, dis, dos,this.vistaChat);
             // Invoking the start() method
-            t.start();
+            this.conectionHandler.start();
 		}
+		
 		public void conectar(String IP, int puerto) throws UnknownHostException, IOException {
 			
 			Socket s = new Socket(IP,puerto);
@@ -218,4 +225,10 @@ public class Conexion
 		public Socket getsocket() {
 			return this.socket;
 		}
+
+		public ConectionHandler getConectionHandler() {
+			return conectionHandler;
+		}
+		
+		
 }

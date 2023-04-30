@@ -31,28 +31,16 @@ public class ControladorVistaChat implements ActionListener {
 		String comando = e.getActionCommand();
 		
         if (comando.equalsIgnoreCase("ABANDONAR")) {
-        	this.vistaChat.mostrarVentana(false);
+        	//this.vistaChat.mostrarVentana(false);
         	IVistaInicial vistaInicial = new vistaInicial();
         	vistaInicial.mostrarVentana(true);
+        	this.conexion.getConectionHandler().terminarRecibirMensajes();
         	//Socket closeeeee
         }
         else {
         	if (comando.equalsIgnoreCase("ENVIAR")) {
-        		//System.out.println("mensajito manager"+conexion.getMessageManager());
         		this.conexion.getMessageManager().enviaMensaje(this.vistaChat.getTxtIngreseTextoAqui().getText());
         		this.vistaChat.getTxtIngreseTextoAqui().setText("");
-//        		try {
-//        			Socket socket = this.conexionReceptor.getsocket();
-//                    PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-//                    BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//                    out.println(this.vistaChat.getTxtIngreseTextoAqui());
-//                    out.close();
-//                    socket.close();
-//                    this.vistaChat.setText("");
-//                    
-//                } catch (Exception e1) {
-//                    e1.printStackTrace();
-//                }
         	}
         }
 

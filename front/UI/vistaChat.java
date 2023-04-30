@@ -36,7 +36,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 	private JTextArea textArea;
 	//private Conexion conexion = null;
 	private ControladorVistaChat cont;
-	
+	private boolean cerrarVentana = false;
 	/**
 	 * Launch the application.
 	 */

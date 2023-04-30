@@ -12,6 +12,7 @@ public class ConectionHandler extends Thread{
 	final DataInputStream dis;
     final DataOutputStream dos;
     final Socket s;
+    private boolean terminar = false;
     
 	public ConectionHandler(Socket s,DataInputStream dis, DataOutputStream dos,IVistaChat vista) {
 		super();
@@ -26,26 +27,28 @@ public class ConectionHandler extends Thread{
 		String recibido;
 		super.run();
 	
-		while(true) {
+		while(this.terminar == false) {
 			
 			try {
-				System.out.println("xd");
 				recibido = dis.readUTF();
-				System.out.println(recibido);
 				this.vista.getTextArea().setText(this.vista.getTextArea().getText()+"\n"+recibido);
-				
-				//HAY QUE MATAR ESTE THREAD EN QUE MOMENTO?
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
-//	   this.dis.close();
-//	   this.dos.close();
 	}
 	
-	
+	public void terminarRecibirMensajes() {
+		this.terminar = true;
+		try {
+			this.dis.close();
+			this.dos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
     
 }
