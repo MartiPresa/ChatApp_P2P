@@ -23,8 +23,7 @@ public class ControladorVistaChat implements ActionListener {
     public ControladorVistaChat(IVistaChat vista) {
         this.vistaChat = vista;
         this.vistaChat.addActionListener(this);
-        //this.conexion = vista.getConexion();
-        //this.conexionReceptor = new Conexion(vista);
+       
     } 
 
 	public void actionPerformed(ActionEvent e) {
@@ -38,13 +37,14 @@ public class ControladorVistaChat implements ActionListener {
         	this.vistaChat.mostrarVentana(false);
         	IVistaInicial vistaInicial = new vistaInicial();
         	vistaInicial.mostrarVentana(true);
-        	
-        	//Socket closeeeee
         }
         else {
         	if (comando.equalsIgnoreCase("ENVIAR")) {
         		this.conexion.getMessageManager().enviaMensaje(this.vistaChat.getTxtIngreseTextoAqui().getText());
+        		this.vistaChat.getTextArea().setText(this.vistaChat.getTextArea().getText()+"\n\t\t\t\t" +this.vistaChat.getTxtIngreseTextoAqui().getText()+"\n");
+        		
         		this.vistaChat.getTxtIngreseTextoAqui().setText("");
+        	
         	}
         }
 

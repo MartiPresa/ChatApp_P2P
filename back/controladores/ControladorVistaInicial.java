@@ -35,7 +35,7 @@ public class ControladorVistaInicial implements ActionListener{
    
         	
             try {
-            	System.out.println("Enre");
+            	
             	if (condition == false)
             		JOptionPane.showMessageDialog(null, "El puerto o el IP son invalidos");
             	else {
@@ -45,8 +45,6 @@ public class ControladorVistaInicial implements ActionListener{
             		conexion.setVista(vistaChat);
             		
             		this.conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
-            		
-            		System.out.println("Conexion exitosa x2\n"+conexion.getMessageManager());
             		
 //            		IVistaChat vistaChat = new vistaChat();
 //            		conexion.setVista(vistaChat);
@@ -71,6 +69,7 @@ public class ControladorVistaInicial implements ActionListener{
         	if (!this.vistaInicial.getPuertoEscucha().equals("puerto")) {
         		IVistaModoEscucha vistaEscucha = new vistaEspera();
         		this.vistaInicial.mostrarVentana(false);
+        		
         		vistaEscucha.mostrarVentana(true);  
         		try {
         			IVistaChat vistaChat = new vistaChat();
@@ -78,8 +77,11 @@ public class ControladorVistaInicial implements ActionListener{
 					this.conexion.Conectar(Integer.parseInt(this.vistaInicial.getPuertoEscucha()));
 					vistaChat.getCont().setConexion(conexion);
 					//vistaChat.setConexion(conexion);
-					vistaEscucha.mostrarVentana(false);
-					vistaChat.mostrarVentana(true);
+					//if(this.conexion.getsocket().isConnected() == true) {
+						vistaEscucha.mostrarVentana(false);
+						vistaChat.mostrarVentana(true);
+					//}
+					
 					
 				} catch (NumberFormatException e1) {
 					// TODO Auto-generated catch block

@@ -101,6 +101,7 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionList
 	}
 
 	public void mostrarVentana(boolean cond) {
+		this.setEnabled(cond);
 		this.setVisible(cond);
 		
 	}
