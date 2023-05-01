@@ -76,10 +76,15 @@ public class ControladorVistaInicial implements ActionListener{
             		conexion.setVista(vistaChat);
 					this.conexion.Conectar(Integer.parseInt(this.vistaInicial.getPuertoEscucha()));
 					vistaChat.getCont().setConexion(conexion);
+//					VENTANA EMERGENTE PARA QUE EL USUARIO CONFIRME SI QUIERE INICIAR UN CHAT
+//					if (this.conexion.getsocket().isConnected()) {
+//						JOptionPane.showMessageDialog(null, "Un usuario quiere iniciar un chat.\nDesea aceptarlo?");
+//					}
+						
 					//vistaChat.setConexion(conexion);
 					//if(this.conexion.getsocket().isConnected() == true) {
-						vistaEscucha.mostrarVentana(false);
-						vistaChat.mostrarVentana(true);
+					vistaEscucha.mostrarVentana(false);
+					vistaChat.mostrarVentana(true);
 					//}
 					
 					
@@ -91,9 +96,6 @@ public class ControladorVistaInicial implements ActionListener{
 					e1.printStackTrace();
 				}
         		
-        		//vistaEscucha.mostrarVentana(false);
-        		//IVistaChat vistaChat = new vistaChat();
-        		//vistaChat.mostrarVentana(true);
         	}
         	else
         		JOptionPane.showMessageDialog(null, "El puerto es invalido");

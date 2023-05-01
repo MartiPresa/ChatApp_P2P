@@ -46,7 +46,7 @@ public class Conexion
 		                DataInputStream dis = new DataInputStream(s.getInputStream());
 		                DataOutputStream dos = new DataOutputStream(s.getOutputStream());
 		                  
-		             
+		                this.socket = s;
 		                this.messageManager = new MessageManager(s, dis, dos,this.vistaChat);
 		                this.conectionHandler = new ConectionHandler(s, dis, dos,this.vistaChat);
 		                
