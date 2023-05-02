@@ -18,6 +18,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import back.Conexion;
+import back.MessageManager;
 import controladores.ControladorVistaChat;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
@@ -32,7 +34,9 @@ public class vistaChat extends JFrame implements IVistaChat{
 	private JButton btnEnviar;
 	private JScrollPane jScrollPane1;
 	private JTextArea textArea;
-	
+	//private Conexion conexion = null;
+	private ControladorVistaChat cont;
+	private boolean cerrarVentana = false;
 	/**
 	 * Launch the application.
 	 */
@@ -52,13 +56,13 @@ public class vistaChat extends JFrame implements IVistaChat{
 	/**
 	 * Create the frame.
 	 */
-	public vistaChat() {
+	public vistaChat() { 
 		setTitle("CHAT EN TIEMPO REAL");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		this.setVisible(true);
+		//this.setVisible(true);
 		setContentPane(contentPane);
 		
 		JLabel lblNewLabel = new JLabel("Ya estan en contacto! ");
@@ -71,6 +75,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		
 		btnAbandonar.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		
 		txtIngreseTextoAqui = new JTextField();
@@ -116,10 +121,11 @@ public class vistaChat extends JFrame implements IVistaChat{
 		);
 		
 		textArea = new JTextArea();
+		textArea.setEditable(false);
 		jScrollPane1.setViewportView(textArea);
 		contentPane.setLayout(gl_contentPane);
 		//JOptionPane.showInternalMessageDialog(null, "Uno de los participantes ha abandonado el chat. Ha sido desconectado.");
-		ControladorVistaChat cont = new ControladorVistaChat(this);
+		cont = new ControladorVistaChat(this);
 	}
 
 	public void EnviarMensaje(String Mensaje) {
@@ -145,12 +151,9 @@ public class vistaChat extends JFrame implements IVistaChat{
 	}
 
 	public void mostrarVentana(boolean cond) {
+		this.setVisible(cond);
 		this.setEnabled(cond);
-		
 	}
-
-
-	
 
 	public JTextArea getTextArea() {
 		return textArea;
@@ -163,4 +166,27 @@ public class vistaChat extends JFrame implements IVistaChat{
 	public JTextField getTxtIngreseTextoAqui() {
 		return txtIngreseTextoAqui;
 	}
+
+	public void setText(String text) {
+		// TODO Auto-generated method stub
+	}
+
+//	public void setConexion(Conexion conexion) {
+//		this.conexion = conexion;
+//		this.cont.setConexion(conexion);
+//	}
+//	
+//	public Conexion getConexion() {
+//		return this.conexion;
+//	}
+
+	public ControladorVistaChat getCont() {
+		return cont;
+	}
+
+	public JButton getBtnEnviar() {
+		return btnEnviar;
+	}
+	
+	
 }

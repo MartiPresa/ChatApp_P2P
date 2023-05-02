@@ -143,7 +143,7 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 		btnModoEscucha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
-		});
+		}); 
 		panel_3.add(btnModoEscucha);
 		btnModoEscucha.setActionCommand("MODOESCUCHA");
 		btnModoEscucha.setForeground(new Color(0, 0, 0));

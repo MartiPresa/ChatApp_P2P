@@ -1,6 +1,8 @@
 package back;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -10,55 +12,97 @@ import java.net.UnknownHostException;
 
 import UI.IVistaChat;
 
-public class Conexion implements Receptor, Emisor
+public class Conexion 
 {
- 
+	
 	private IVistaChat vistaChat = null;
+	private Socket socket;
+	private ServerSocket serverSocket;
+	private PrintWriter out;
+	private BufferedReader in;
+	private MessageManager messageManager;
+	private ConectionHandler conectionHandler = null;
 	
-	
-
+	public Conexion() {}
+	 
 	public Conexion(IVistaChat vistaChat) {
 		super();
 		this.vistaChat = vistaChat;
 	}
 
-	public void conectar(String IP, int puerto) throws UnknownHostException, IOException {
-		 Socket socket = new Socket(IP,puerto);
-         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-   //      out.println(jTextArea1.getText()); //el método println(...) escribe el MENSAJE por el canal out enviándolo al proceso Servidor.
-         out.close(); //creo que nosotros no deberiamos cerrar el canal ya que permitirai nuevas conexiones en este lapso
-         socket.close(); //o es este?
-    //     jTextArea1.setText("");
-		
-	}
+	//RECEPTOR
+		public void Conectar(final int puerto) throws IOException {
+			
+			 ServerSocket ss = new ServerSocket(puerto);
 
-	public void Conectar(final int puerto) {
-		new Thread() {
-            public void run() {
-                try {
-                    ServerSocket s = new ServerSocket(puerto);
- //                   jTextArea1.append("Esperando conexiones en puerto " + direccionIP.getText() + "\n");
+		            Socket s = null;
+		              
+		            try 
+		            {
+		                s = ss.accept();
+		                
+		               // System.out.println(s.isConnected());
+		                 
+		                DataInputStream dis = new DataInputStream(s.getInputStream());
+		                DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+		                  
+		                this.socket = s;
+		                this.messageManager = new MessageManager(s, dis, dos,this.vistaChat);
+		                this.conectionHandler = new ConectionHandler(s, dis, dos,this.vistaChat);
+		                
+		                this.conectionHandler.start();
+		                  
+		            }
+		            catch (Exception e){
+		                s.close();
+		                ss.close();
+		                e.printStackTrace();
+		            }
+		       
+		    }
 
-                    while (true) { //como siempre esta atento a escuchar peticiones del cliente
-
-                        Socket soc = s.accept(); //accept() se queda a la espera, no continua el codigo. soc es el socket del cliente.
-                        PrintWriter out = new PrintWriter(soc.getOutputStream(), true); //puede ser new DataOutputStream(soc.getOutputStream())
-                        BufferedReader in = new BufferedReader(new InputStreamReader(soc.getInputStream())); //puede ser new DataInputStream(soc.getInputStream())
-
-                        String msg = in.readLine(); 
-     //                   jTextArea1.append(msg + "\n"); //es como el system out
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
- //                   jTextArea1.append(e.getMessage() + "\n");
-                }
-  //              jTextArea1.append("fin");
-
-            }
-        }.start();
-		
-	}
 	
+		public void recibirMensajes() {
+			Socket s = this.messageManager.getSocket();
+			DataInputStream dis = null;
+			DataOutputStream dos = null;
+			try {
+				dis = new DataInputStream(s.getInputStream());
+				dos = new DataOutputStream(s.getOutputStream());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+            this.conectionHandler = new ConectionHandler(s, dis, dos,this.vistaChat);
+            this.conectionHandler.start();
+		}
+		
+		public void conectar(String IP, int puerto) throws UnknownHostException, IOException {
+			
+			Socket s = new Socket(IP,puerto);
+			DataInputStream dis = new DataInputStream(s.getInputStream());
+            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+			
+			this.messageManager = new MessageManager(s,dis,dos,this.vistaChat);
+		}
+		
+		
+		public MessageManager getMessageManager() {
+			return this.messageManager;
+		}
+
+		public void setVista(IVistaChat v) {
+			this.vistaChat = v;
+		}
+		 
+		public Socket getsocket() {
+			return this.socket;
+		}
+
+		public ConectionHandler getConectionHandler() {
+			return conectionHandler;
+		}
+		
+		
 }

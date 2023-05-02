@@ -12,7 +12,7 @@ import back.Receptor;
 public class ControladorModoEscucha implements ActionListener {
 
 	private IVistaModoEscucha vistaModoEscucha = null;
-    private Receptor conexion= new Conexion();
+    //private Conexion conexion= new Conexion();
 
     public ControladorModoEscucha(IVistaModoEscucha vista) {
         this.vistaModoEscucha = vista;
