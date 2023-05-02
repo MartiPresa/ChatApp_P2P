@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketException;
 
 import UI.IVistaChat;
 
@@ -28,18 +29,25 @@ public class ConectionHandler extends Thread{
 
 		String recibido;
 		super.run();
-	
+		String mensaje = "Socket closed";
+		
 		//while(this.terminar == false && this.s.isClosed() != true) {
 		while(this.terminar == false) {
+			
 			try {
 				recibido = dis.readUTF();
 				this.vista.getTextArea().setText(this.vista.getTextArea().getText()+"\n"+recibido);
-			} catch (EOFException e) {
-				//this.terminarRecibirMensajes();
-				//this.terminar = true;
+			} 
+			catch (EOFException e) {
+				//e.printStackTrace();
+				this.terminarRecibirMensajes();
 			}
-			catch (IOException e1) {
-				e1.printStackTrace();
+			catch (SocketException e1) {
+				this.terminarRecibirMensajes();
+				//e1.printStackTrace();
+			}
+			catch (IOException e2) {
+				e2.printStackTrace();
 			}
 		}
 	}
