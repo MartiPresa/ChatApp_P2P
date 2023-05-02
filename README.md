@@ -10,6 +10,7 @@ Tener instalado el Java Development Kit versión 17.0 en adelante.
 Utilizar en un único dispositivo o dispositivos conectados por una red LAN.
 
 # Instrucciones de operación
-Abrir los archivos .jar ejecutables incluidos en la carpeta "Ejecutables"
+Abrir los archivos .jar ejecutables incluidos en la carpeta "Iteracion-2"
 
-## completar una vez generados los .jar
+## Chat.jar
+Esta interfaz está diseñada para ser operada por un receptor, ingresando su puerto, y un receptor, ingresando la IP y puerto correspondiente al usuario receptor.
