@@ -107,11 +107,6 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionList
 		
 	}
 
-	public void ConfirmarConexion() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void Temporizador() {
 		// TODO Auto-generated method stub
 		

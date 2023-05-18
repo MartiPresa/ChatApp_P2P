@@ -6,8 +6,6 @@ import javax.swing.JPanel;
 
 public interface IVistaInicial 
 {
-	//void ActivarModoEscucha();
-	//void EstablecerConexion();
 	String getPuerto();
 	String getIP();
 	void addActionListener(ActionListener actionListener);

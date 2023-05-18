@@ -128,20 +128,6 @@ public class vistaChat extends JFrame implements IVistaChat{
 		cont = new ControladorVistaChat(this);
 	}
 
-	public void EnviarMensaje(String Mensaje) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void RecibirMensaje(String Mensaje) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void AbandonarChat() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public void addActionListener(ActionListener actionListener) {
 		this.actionListener = actionListener;
