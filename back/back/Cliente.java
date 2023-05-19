@@ -5,6 +5,7 @@ public class Cliente
 	private String nickname;
 	private int puerto;
 	private String IP;
+	private String contrasena;
 	
 	public Cliente(String nickname, int puerto, String iP) {
 		super();
@@ -21,5 +22,9 @@ public class Cliente
 	/*
 	 * hay que encriptar los mjs cuando se mandan y desencriptarlos cuando se reciben
 	 * el servidor no recibe el mje como tal!
+	 */
+	
+	/*
+	 * como almacenamos las contraseñas?? 
 	 */
 }
