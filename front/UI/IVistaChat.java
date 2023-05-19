@@ -7,7 +7,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import back.Conexion;
+import back.Cliente;
 import back.MessageManager;
 import controladores.ControladorVistaChat;
 

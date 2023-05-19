@@ -12,19 +12,19 @@ import UI.IVistaInicial;
 import UI.IVistaModoEscucha;
 import UI.vistaChat;
 import UI.vistaEspera;
-import back.Conexion;
+import back.Cliente;
 import back.Emisor;
 import back.Receptor;
 
 public class ControladorVistaInicial implements ActionListener{
 	
 	private IVistaInicial vistaInicial = null;
-    private Conexion conexion= null;
+    private Cliente conexion= null;
     
     public ControladorVistaInicial(IVistaInicial vista) {
         this.vistaInicial = vista;
         this.vistaInicial.addActionListener(this);
-        this.conexion = new Conexion();
+        this.conexion = new Cliente();
     } 
 
 	public void actionPerformed(ActionEvent e) {
@@ -44,7 +44,7 @@ public class ControladorVistaInicial implements ActionListener{
             		IVistaChat vistaChat = new vistaChat();
             		conexion.setVista(vistaChat);
             		
-            		this.conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
+            		this.conexion.conectarServer(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
             		
 //            		IVistaChat vistaChat = new vistaChat();
 //            		conexion.setVista(vistaChat);

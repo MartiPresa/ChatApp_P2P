@@ -10,14 +10,14 @@ import java.net.Socket;
 import UI.IVistaChat;
 import UI.IVistaInicial;
 import UI.vistaInicial;
-import back.Conexion;
+import back.Cliente;
 import back.Emisor;
 import back.Receptor;
 
 public class ControladorVistaChat implements ActionListener {
 
 	private IVistaChat vistaChat = null;
-    private Conexion conexion= null;
+    private Cliente conexion= null;
     //private Conexion conexionReceptor = null;
     
     public ControladorVistaChat(IVistaChat vista) {
@@ -50,11 +50,11 @@ public class ControladorVistaChat implements ActionListener {
 
 	}
 
-	public Conexion getConexion() {
+	public Cliente getConexion() {
 		return conexion;
 	}
 
-	public void setConexion(Conexion conexion) {
+	public void setConexion(Cliente conexion) {
 		this.conexion = conexion;
 	}
 	

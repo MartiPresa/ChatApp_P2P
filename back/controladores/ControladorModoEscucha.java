@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import UI.IVistaInicial;
 import UI.IVistaModoEscucha;
 import UI.vistaInicial;
-import back.Conexion;
+import back.Cliente;
 import back.Receptor;
 
 public class ControladorModoEscucha implements ActionListener {
