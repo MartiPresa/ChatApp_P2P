@@ -1,11 +1,14 @@
 package back;
+/*
+ * pude ser la clase conexion!!
+ */
 
 public class Cliente 
 {
 	private String nickname;
 	private int puerto;
 	private String IP;
-	private String contrasena;
+	private String contrasena; //peude ser array!
 	
 	public Cliente(String nickname, int puerto, String iP) {
 		super();
