@@ -11,8 +11,6 @@ import UI.IVistaChat;
 import UI.IVistaInicial;
 import UI.vistaInicial;
 import back.Conexion;
-import back.Emisor;
-import back.Receptor;
 
 public class ControladorVistaChat implements ActionListener {
 

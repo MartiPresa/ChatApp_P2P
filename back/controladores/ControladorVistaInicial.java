@@ -13,8 +13,7 @@ import UI.IVistaModoEscucha;
 import UI.vistaChat;
 import UI.vistaEspera;
 import back.Conexion;
-import back.Emisor;
-import back.Receptor;
+
 
 public class ControladorVistaInicial implements ActionListener{
 	
