@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 import back.Conexion;
 import controladores.ControladorModoEscucha;
 
-public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionListener {
+public class VistaModoEscucha extends JFrame implements IVistaModoEscucha {
 
 	private JPanel contentPane;
 	private ActionListener actionListener =null;
@@ -32,7 +32,7 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionList
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					vistaEspera frame = new vistaEspera();
+					VistaModoEscucha frame = new VistaModoEscucha();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,14 +44,12 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionList
 	/**
 	 * Create the frame.
 	 */
-	public vistaEspera() {
+	public VistaModoEscucha() {
 		setTitle("MODO ESCUCHA");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-//		this.setEnabled(true);
-//		this.setVisible(true);
 		setContentPane(contentPane);
 		
 		btnVolver = new JButton("Volver");
@@ -89,8 +87,6 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionList
 					.addComponent(btnVolver))
 		);
 		contentPane.setLayout(gl_contentPane);
-		//JOptionPane.showConfirmDialog(null, "El tiempo de espera ha finalizado. Desea intentar nuevamente?");
-		//JOptionPane.showConfirmDialog(null, "El usuario con puerto 1234 e IP 192.158.1.38 busca comunicarse. Desea conectarse?");
 		ControladorModoEscucha cont = new ControladorModoEscucha(this);
 		
 	}
@@ -106,23 +102,7 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionList
 	public void mostrarVentana(boolean cond) {
 		this.setEnabled(cond);
 		this.setVisible(cond);
-		
-	}
-
-	public void ConfirmarConexion() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void Temporizador() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	} 
 
 	public Conexion getConexion() {
 		return conexion;
@@ -131,7 +111,9 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionList
 	public void setConexion(Conexion conexion) {
 		this.conexion = conexion;
 	}
+	
 	public String getPuerto() {
 		return this.txtPuerto.getText();
 	}
+
 }

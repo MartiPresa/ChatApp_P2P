@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
 import UI.IVistaChat;
 import UI.IVistaInicial;
 import UI.IVistaModoEscucha;
-import UI.vistaChat;
-import UI.vistaInicial;
+import UI.VistaChat;
+import UI.VistaInicial;
 import back.Conexion;
 
 public class ControladorModoEscucha implements ActionListener {
@@ -29,30 +29,22 @@ public class ControladorModoEscucha implements ActionListener {
 
 		if (comando.equalsIgnoreCase("VOLVER")) {
 			this.vistaModoEscucha.mostrarVentana(false);
-			IVistaInicial vistaInicial = new vistaInicial();
+			IVistaInicial vistaInicial = new VistaInicial();
 			vistaInicial.mostrarVentana(true);
 		} else if (comando.equalsIgnoreCase("ACTIVAR")) {
 			if (!this.vistaModoEscucha.getPuerto().equals("puerto")) {
 
 				try {
 					this.conexion = this.vistaModoEscucha.getConexion();
-					IVistaChat vistaChat = new vistaChat();
+					IVistaChat vistaChat = new VistaChat();
 					conexion.setVista(vistaChat);
 					vistaChat.getCont().setConexion(conexion);
 					JOptionPane.showMessageDialog(null,
 							"Se encuentra en modo escucha. Espere a que alguien lo contacte.");
-					this.conexion.Conectar(Integer.parseInt(this.vistaModoEscucha.getPuerto()) );
-//				VENTANA EMERGENTE PARA QUE EL USUARIO CONFIRME SI QUIERE INICIAR UN CHAT
-//				if (this.conexion.getsocket().isConnected()) {
-//					JOptionPane.showMessageDialog(null, "Un usuario quiere iniciar un chat.\nDesea aceptarlo?");
-//				}
+					this.conexion.Conectar(Integer.parseInt(this.vistaModoEscucha.getPuerto()));
 
-					// vistaChat.setConexion(conexion);
-					// if(this.conexion.getsocket().isConnected() == true) {
-					// Thread.sleep(2000);
 					this.vistaModoEscucha.mostrarVentana(false);
 					vistaChat.mostrarVentana(true);
-					// }
 
 				} catch (NumberFormatException e1) {
 					e1.printStackTrace();

@@ -18,22 +18,21 @@ import controladores.ControladorVistaInicial;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class vistaInicial extends JFrame implements IVistaInicial{
+public class VistaInicial extends JFrame implements IVistaInicial {
 
 	private JPanel contentPane;
 	private JTextField txtPuerto;
 	private JTextField txtIp;
-	private ActionListener actionListenr; 
+	private ActionListener actionListenr;
 	private JButton btnModoEscucha;
 	public JButton btnConectar;
 	private ControladorVistaInicial cont = null;
-	
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					vistaInicial frame = new vistaInicial();
+					VistaInicial frame = new VistaInicial();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,78 +41,68 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 		});
 	}
 
-	
-	public vistaInicial() {
+	public VistaInicial() {
 		setTitle("BIENVENIDO!");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setVisible(true);
-		
-		
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 2, 0, 0));
-		
+
 		JPanel panel = new JPanel();
 		contentPane.add(panel);
-		
+
 		txtPuerto = new JTextField();
 		txtPuerto.setForeground(new Color(120, 120, 120));
 		txtPuerto.setText("puerto");
 		txtPuerto.setToolTipText("puerto");
 		txtPuerto.setBackground(new Color(255, 255, 255));
 		txtPuerto.setColumns(10);
-		
+
 		txtIp = new JTextField();
 		txtIp.setForeground(new Color(120, 120, 120));
 		txtIp.setText("IP");
 		txtIp.setColumns(10);
-		
+
 		btnConectar = new JButton("Conectar");
-		
+
 		btnConectar.setActionCommand("CONECTAR");
 		btnConectar.setBackground(new Color(245, 255, 246));
 		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
+		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(57)
-							.addComponent(btnConectar))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(45)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(txtPuerto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtIp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap(45, Short.MAX_VALUE))
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(83)
-					.addComponent(txtPuerto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(txtIp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(btnConectar)
-					.addGap(62))
-		);
+						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup().addGap(57).addComponent(btnConectar))
+								.addGroup(gl_panel.createSequentialGroup().addGap(45)
+										.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+												.addComponent(txtPuerto, GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(txtIp, GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+						.addContainerGap(45, Short.MAX_VALUE)));
+		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(gl_panel
+				.createSequentialGroup().addGap(83)
+				.addComponent(txtPuerto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						GroupLayout.PREFERRED_SIZE)
+				.addGap(18)
+				.addComponent(txtIp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addGap(18).addComponent(btnConectar).addGap(62)));
 		panel.setLayout(gl_panel);
 		btnConectar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		
+
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1);
 		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
-		
+
 		JPanel panel_3 = new JPanel();
 		panel_1.add(panel_3);
-		
+
 		btnModoEscucha = new JButton("Modo escucha");
 		btnModoEscucha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -122,33 +111,20 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 		btnModoEscucha.setActionCommand("MODOESCUCHA");
 		btnModoEscucha.setForeground(new Color(0, 0, 0));
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
-		gl_panel_3.setHorizontalGroup(
-			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_3.createSequentialGroup()
-					.addGap(34)
-					.addComponent(btnModoEscucha)
-					.addContainerGap(52, Short.MAX_VALUE))
-		);
-		gl_panel_3.setVerticalGroup(
-			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_3.createSequentialGroup()
-					.addContainerGap(118, Short.MAX_VALUE)
-					.addComponent(btnModoEscucha)
-					.addGap(115))
-		);
+		gl_panel_3.setHorizontalGroup(gl_panel_3.createParallelGroup(Alignment.LEADING).addGroup(gl_panel_3
+				.createSequentialGroup().addGap(34).addComponent(btnModoEscucha).addContainerGap(52, Short.MAX_VALUE)));
+		gl_panel_3.setVerticalGroup(gl_panel_3.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
+				gl_panel_3.createSequentialGroup().addContainerGap(118, Short.MAX_VALUE).addComponent(btnModoEscucha)
+						.addGap(115)));
 		panel_3.setLayout(gl_panel_3);
-		//JOptionPane.showMessageDialog(null, "Estableciendo conexión...");
-		//JOptionPane.showMessageDialog(null, "El usuario con puerto 5678 e IP: 192.228.17.57 no se encuentra en modo escucha. Inténtelo más tarde");
 		this.cont = new ControladorVistaInicial(this);
 	}
-
 
 	public String getPuerto() {
 		return this.txtPuerto.getText();
 	}
 
 	public String getIP() {
-		// TODO Auto-generated method stub
 		return this.txtIp.getText();
 	}
 
@@ -158,29 +134,14 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 		this.actionListenr = actionListener;
 	}
 
-
-	public void mostrarVentana() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 	public void setVisibleBtn() {
 		this.btnModoEscucha.setVisible(true);
-		
-	}
-	
-//	public void keyReleased(KeyEvent e) {
-//        boolean condition = this.getPuerto()> 1000 && this.getIP().length()>0;
-//        this.btnConectar.setEnabled(condition);
-//    }
-	
-	public void mostrarVentana(boolean cond) {
-		this.setVisible(cond);
-		
+
 	}
 
-	
-	
+	public void mostrarVentana(boolean cond) {
+		this.setVisible(cond);
+
+	}
 
 }

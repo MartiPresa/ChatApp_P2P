@@ -25,7 +25,7 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
 
-public class vistaChat extends JFrame implements IVistaChat{
+public class VistaChat extends JFrame implements IVistaChat{
 
 	private JPanel contentPane;
 	private JTextField txtIngreseTextoAqui;
@@ -34,7 +34,6 @@ public class vistaChat extends JFrame implements IVistaChat{
 	private JButton btnEnviar;
 	private JScrollPane jScrollPane1;
 	private JTextArea textArea;
-	//private Conexion conexion = null;
 	private ControladorVistaChat cont;
 	private boolean cerrarVentana = false;
 	/**
@@ -44,7 +43,7 @@ public class vistaChat extends JFrame implements IVistaChat{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					vistaChat frame = new vistaChat();
+					VistaChat frame = new VistaChat();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,13 +55,12 @@ public class vistaChat extends JFrame implements IVistaChat{
 	/**
 	 * Create the frame.
 	 */
-	public vistaChat() { 
+	public VistaChat() { 
 		setTitle("CHAT EN TIEMPO REAL");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		//this.setVisible(true);
 		setContentPane(contentPane);
 		
 		JLabel lblNewLabel = new JLabel("Ya estan en contacto! ");
@@ -128,21 +126,6 @@ public class vistaChat extends JFrame implements IVistaChat{
 		cont = new ControladorVistaChat(this);
 	}
 
-	public void EnviarMensaje(String Mensaje) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void RecibirMensaje(String Mensaje) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void AbandonarChat() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void addActionListener(ActionListener actionListener) {
 		this.actionListener = actionListener;
 		this.btnAbandonar.addActionListener(actionListener);
@@ -170,15 +153,6 @@ public class vistaChat extends JFrame implements IVistaChat{
 	public void setText(String text) {
 		// TODO Auto-generated method stub
 	}
-
-//	public void setConexion(Conexion conexion) {
-//		this.conexion = conexion;
-//		this.cont.setConexion(conexion);
-//	}
-//	
-//	public Conexion getConexion() {
-//		return this.conexion;
-//	}
 
 	public ControladorVistaChat getCont() {
 		return cont;
