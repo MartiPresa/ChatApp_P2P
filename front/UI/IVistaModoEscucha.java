@@ -12,5 +12,5 @@ public interface IVistaModoEscucha
 	void mostrarVentana(boolean cond);
 	Conexion getConexion();
 	void setConexion(Conexion conexion);
-	int getPuerto();
+	String getPuerto();
 }

@@ -65,15 +65,11 @@ public class ControladorVistaInicial implements ActionListener{
 			}
         }
         else if (comando.equalsIgnoreCase("MODOESCUCHA")) {
-        	//if (!this.vistaInicial.getPuertoEscucha().equals("puerto")) {
         		IVistaModoEscucha vistaEscucha = new vistaEspera();
         		this.vistaInicial.mostrarVentana(false);
         		vistaEscucha.mostrarVentana(true);  
         		vistaEscucha.setConexion(this.conexion);
         		
-//        	}
-//        	else
-//        		JOptionPane.showMessageDialog(null, "El puerto es invalido");
         }
         
 		

@@ -31,7 +31,6 @@ public class ConectionHandler extends Thread{
 		super.run();
 		String mensaje = "Socket closed";
 		
-		//while(this.terminar == false && this.s.isClosed() != true) {
 		while(this.terminar == false) {
 			
 			try {
@@ -39,12 +38,10 @@ public class ConectionHandler extends Thread{
 				this.vista.getTextArea().setText(this.vista.getTextArea().getText()+"\n"+recibido);
 			} 
 			catch (EOFException e) {
-				//e.printStackTrace();
 				this.terminarRecibirMensajes();
 			}
 			catch (SocketException e1) {
 				this.terminarRecibirMensajes();
-				//e1.printStackTrace();
 			}
 			catch (IOException e2) {
 				e2.printStackTrace();
@@ -53,10 +50,8 @@ public class ConectionHandler extends Thread{
 	}
 	
 	public void terminarRecibirMensajes() {
-		//String mensaje = "El otro usuario se desconecto.\n";
 		this.terminar = true;
 		
-		//this.vista.getTextArea().setText(this.vista.getTextArea().getText()+"\n"+mensaje);
 		try {
 			this.dis.close();
 			this.dos.close();

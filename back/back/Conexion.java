@@ -39,11 +39,9 @@ public class Conexion
 		              
 		            try 
 		            {
-		            	
-		            		
+		                		
 		            		s = ss.accept();
 		            		
-		            		// System.out.println(s.isConnected());
 		            		
 		            		DataInputStream dis = new DataInputStream(s.getInputStream());
 		            		DataOutputStream dos = new DataOutputStream(s.getOutputStream());
@@ -57,8 +55,6 @@ public class Conexion
 		            //	}
 		            }
 		            catch (Exception e){
-//		                s.close();
-//		                ss.close();
 		                e.printStackTrace();
 		            }
 		       

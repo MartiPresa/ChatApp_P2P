@@ -16,7 +16,6 @@ public class ControladorVistaChat implements ActionListener {
 
 	private IVistaChat vistaChat = null;
     private Conexion conexion= null;
-    //private Conexion conexionReceptor = null;
     
     public ControladorVistaChat(IVistaChat vista) {
         this.vistaChat = vista;
@@ -29,7 +28,6 @@ public class ControladorVistaChat implements ActionListener {
 		
         if (comando.equalsIgnoreCase("ABANDONAR")) {
         	
-        	//this.vistaChat.getTextArea().setText(this.vistaChat.getTextArea().getText()+"\n"+"El otro usuario se desconecto.\n");
         	this.conexion.getMessageManager().enviaMensaje("El otro usuario se desconecto.\n");
         	this.conexion.getConectionHandler().terminarRecibirMensajes();
         	this.vistaChat.mostrarVentana(false);

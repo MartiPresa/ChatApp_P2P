@@ -131,7 +131,7 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionList
 	public void setConexion(Conexion conexion) {
 		this.conexion = conexion;
 	}
-	public int getPuerto() {
-		return Integer.parseInt(this.txtPuerto.getText());
+	public String getPuerto() {
+		return this.txtPuerto.getText();
 	}
 }
