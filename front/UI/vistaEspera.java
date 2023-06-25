@@ -10,10 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
+import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
+import back.Conexion;
 import controladores.ControladorModoEscucha;
 
 public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionListener {
@@ -21,7 +22,9 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionList
 	private JPanel contentPane;
 	private ActionListener actionListener =null;
 	private JButton btnVolver;
-
+	private JTextField txtPuerto;
+	private Conexion conexion;
+	private JButton btnNewButton;
 	/**
 	 * Launch the application.
 	 */
@@ -51,54 +54,53 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionList
 //		this.setVisible(true);
 		setContentPane(contentPane);
 		
-		JLabel lblNewLabel = new JLabel("Se encuentra en modo escucha");
-		
-		JLabel lblNewLabel_1 = new JLabel("Le notificaremos cuando alguien intente contactarlo...");
-		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setValue(30);
-		
 		btnVolver = new JButton("Volver");
 		btnVolver.setActionCommand("VOLVER");
+		
+		txtPuerto = new JTextField();
+		txtPuerto.setText("puerto");
+		txtPuerto.setColumns(10);
+		
+		btnNewButton = new JButton("Activar");
+		btnNewButton.setActionCommand("ACTIVAR");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-					.addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(135))
+					.addContainerGap(371, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(59, Short.MAX_VALUE)
-					.addComponent(lblNewLabel_1)
-					.addGap(41))
+					.addGap(147)
+					.addComponent(txtPuerto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(163, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(126, Short.MAX_VALUE)
-					.addComponent(lblNewLabel)
-					.addGap(120))
+					.addGap(164)
+					.addComponent(btnNewButton)
+					.addContainerGap(188, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(5)
-					.addComponent(lblNewLabel)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel_1)
-					.addPreferredGap(ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(progressBar, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnVolver, Alignment.TRAILING)))
+					.addGap(80)
+					.addComponent(txtPuerto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnNewButton)
+					.addPreferredGap(ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+					.addComponent(btnVolver))
 		);
 		contentPane.setLayout(gl_contentPane);
 		//JOptionPane.showConfirmDialog(null, "El tiempo de espera ha finalizado. Desea intentar nuevamente?");
 		//JOptionPane.showConfirmDialog(null, "El usuario con puerto 1234 e IP 192.158.1.38 busca comunicarse. Desea conectarse?");
 		ControladorModoEscucha cont = new ControladorModoEscucha(this);
+		
 	}
 
 
 	public void addActionListener(ActionListener actionListener) {
 		this.actionListener = actionListener; 
 		this.btnVolver.addActionListener(actionListener);
+		this.btnNewButton.addActionListener(actionListener);
+		this.txtPuerto.addActionListener(actionListener);
 	}
 
 	public void mostrarVentana(boolean cond) {
@@ -120,5 +122,16 @@ public class vistaEspera extends JFrame implements IVistaModoEscucha, ActionList
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Conexion getConexion() {
+		return conexion;
+	}
+
+	public void setConexion(Conexion conexion) {
+		this.conexion = conexion;
+	}
+	public int getPuerto() {
+		return Integer.parseInt(this.txtPuerto.getText());
 	}
 }

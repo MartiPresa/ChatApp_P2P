@@ -24,7 +24,6 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 	private JTextField txtPuerto;
 	private JTextField txtIp;
 	private ActionListener actionListenr; 
-	private JTextField txtPuerto_1;
 	private JButton btnModoEscucha;
 	public JButton btnConectar;
 	private ControladorVistaInicial cont = null;
@@ -112,41 +111,32 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 		contentPane.add(panel_1);
 		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JPanel panel_2 = new JPanel();
-		panel_1.add(panel_2);
-		
-		txtPuerto_1 = new JTextField();
-		txtPuerto_1.setForeground(new Color(148, 148, 148));
-		txtPuerto_1.setText("puerto");
-		txtPuerto_1.setColumns(10);
-		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
-					.addContainerGap(47, Short.MAX_VALUE)
-					.addComponent(txtPuerto_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(43))
-		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
-					.addContainerGap(99, Short.MAX_VALUE)
-					.addComponent(txtPuerto_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
-		panel_2.setLayout(gl_panel_2);
-		
 		JPanel panel_3 = new JPanel();
 		panel_1.add(panel_3);
 		
-		btnModoEscucha = new JButton("Activar modo escucha");
+		btnModoEscucha = new JButton("Modo escucha");
 		btnModoEscucha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
-		}); 
-		panel_3.add(btnModoEscucha);
+		});
 		btnModoEscucha.setActionCommand("MODOESCUCHA");
 		btnModoEscucha.setForeground(new Color(0, 0, 0));
+		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
+		gl_panel_3.setHorizontalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addGap(34)
+					.addComponent(btnModoEscucha)
+					.addContainerGap(52, Short.MAX_VALUE))
+		);
+		gl_panel_3.setVerticalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_3.createSequentialGroup()
+					.addContainerGap(118, Short.MAX_VALUE)
+					.addComponent(btnModoEscucha)
+					.addGap(115))
+		);
+		panel_3.setLayout(gl_panel_3);
 		//JOptionPane.showMessageDialog(null, "Estableciendo conexión...");
 		//JOptionPane.showMessageDialog(null, "El usuario con puerto 5678 e IP: 192.228.17.57 no se encuentra en modo escucha. Inténtelo más tarde");
 		this.cont = new ControladorVistaInicial(this);
@@ -188,11 +178,6 @@ public class vistaInicial extends JFrame implements IVistaInicial{
 	public void mostrarVentana(boolean cond) {
 		this.setVisible(cond);
 		
-	}
-
-
-	public String getPuertoEscucha() {
-		return this.txtPuerto_1.getText();
 	}
 
 	

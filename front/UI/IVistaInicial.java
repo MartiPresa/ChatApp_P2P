@@ -12,7 +12,5 @@ public interface IVistaInicial
 	String getIP();
 	void addActionListener(ActionListener actionListener);
 	void setVisibleBtn();
-	void mostrarVentana(boolean cond);
-	String getPuertoEscucha();
-	
+	void mostrarVentana(boolean cond);	
 }

@@ -39,23 +39,26 @@ public class Conexion
 		              
 		            try 
 		            {
-		                s = ss.accept();
-		                
-		               // System.out.println(s.isConnected());
-		                 
-		                DataInputStream dis = new DataInputStream(s.getInputStream());
-		                DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-		                  
-		                this.socket = s;
-		                this.messageManager = new MessageManager(s, dis, dos,this.vistaChat);
-		                this.conectionHandler = new ConectionHandler(s, dis, dos,this.vistaChat);
-		                
-		                this.conectionHandler.start();
-		                  
+		            	
+		            		
+		            		s = ss.accept();
+		            		
+		            		// System.out.println(s.isConnected());
+		            		
+		            		DataInputStream dis = new DataInputStream(s.getInputStream());
+		            		DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+		            		
+		            		this.socket = s;
+		            		this.messageManager = new MessageManager(s, dis, dos,this.vistaChat);
+		            		this.conectionHandler = new ConectionHandler(s, dis, dos,this.vistaChat);
+		            		
+		            		this.conectionHandler.start();
+		            		
+		            //	}
 		            }
 		            catch (Exception e){
-		                s.close();
-		                ss.close();
+//		                s.close();
+//		                ss.close();
 		                e.printStackTrace();
 		            }
 		       
