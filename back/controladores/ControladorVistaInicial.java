@@ -30,7 +30,7 @@ public class ControladorVistaInicial implements ActionListener {
 
 		if (comando.equalsIgnoreCase("CONECTAR")) {
 			boolean condition = !this.vistaInicial.getPuerto().equals("puerto")
-					&& this.vistaInicial.getIP().length() > 5;
+					&& this.vistaInicial.getIP().equals("localhost");
 
 			try {
 

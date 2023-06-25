@@ -40,8 +40,7 @@ public class Conexion
 		            try 
 		            {
 		                		
-		            		s = ss.accept();
-		            		
+		            		s = ss.accept();		
 		            		
 		            		DataInputStream dis = new DataInputStream(s.getInputStream());
 		            		DataOutputStream dos = new DataOutputStream(s.getOutputStream());
@@ -52,7 +51,6 @@ public class Conexion
 		            		
 		            		this.conectionHandler.start();
 		            		
-		            //	}
 		            }
 		            catch (Exception e){
 		                e.printStackTrace();
