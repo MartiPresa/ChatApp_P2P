@@ -44,6 +44,7 @@ public class ControladorModoEscucha implements ActionListener {
 					this.conexion.Conectar(Integer.parseInt(this.vistaModoEscucha.getPuerto()));
 
 					this.vistaModoEscucha.mostrarVentana(false);
+					vistaChat.setText("Puerto: "+this.conexion.getsocket().getLocalPort());
 					vistaChat.mostrarVentana(true);
 
 				} catch (NumberFormatException e1) {

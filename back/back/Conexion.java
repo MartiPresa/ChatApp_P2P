@@ -22,6 +22,7 @@ public class Conexion
 	private BufferedReader in;
 	private MessageManager messageManager;
 	private ConectionHandler conectionHandler = null;
+	private Socket s;
 	
 	public Conexion() {}
 	 
@@ -76,10 +77,9 @@ public class Conexion
 		
 		public void conectar(String IP, int puerto) throws UnknownHostException, IOException {
 			
-			Socket s = new Socket(IP,puerto);
+			s = new Socket(IP,puerto);
 			DataInputStream dis = new DataInputStream(s.getInputStream());
             DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-			
 			this.messageManager = new MessageManager(s,dis,dos,this.vistaChat);
 		}
 		
@@ -94,6 +94,10 @@ public class Conexion
 		 
 		public Socket getsocket() {
 			return this.socket;
+		}
+		
+		public Socket getsocketEmisor() {
+			return this.s;
 		}
 
 		public ConectionHandler getConectionHandler() {

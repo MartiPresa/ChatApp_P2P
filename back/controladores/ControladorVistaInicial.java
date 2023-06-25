@@ -43,6 +43,7 @@ public class ControladorVistaInicial implements ActionListener {
 					this.conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));
 					this.vistaInicial.mostrarVentana(false);
 					vistaChat.getCont().setConexion(conexion);
+					vistaChat.setText("Conectado con puerto: "+this.conexion.getsocketEmisor().getPort());
 					vistaChat.mostrarVentana(true);
 					conexion.recibirMensajes(); // crea un thread para poder recibir mensajes por el socket
 				}

@@ -150,8 +150,8 @@ public class VistaChat extends JFrame implements IVistaChat{
 		return txtIngreseTextoAqui;
 	}
 
-	public void setText(String text) {
-		// TODO Auto-generated method stub
+	public void setText(String tit) {
+		setTitle(tit);
 	}
 
 	public ControladorVistaChat getCont() {
