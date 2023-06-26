@@ -37,7 +37,7 @@ public class ControladorVistaInicial implements ActionListener {
 				if (condition == false)
 					JOptionPane.showMessageDialog(null, "El puerto o el IP son invalidos");
 				else {
-					System.out.println("Conexion exitosa\n");
+					
 					IVistaChat vistaChat = new VistaChat();
 					conexion.setVista(vistaChat);
 					this.conexion.conectar(this.vistaInicial.getIP(), Integer.parseInt(this.vistaInicial.getPuerto()));

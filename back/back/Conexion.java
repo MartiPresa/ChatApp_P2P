@@ -12,9 +12,8 @@ import java.net.UnknownHostException;
 
 import UI.IVistaChat;
 
-public class Conexion 
-{
-	
+public class Conexion {
+
 	private IVistaChat vistaChat = null;
 	private Socket socket;
 	private ServerSocket serverSocket;
@@ -23,86 +22,82 @@ public class Conexion
 	private MessageManager messageManager;
 	private ConectionHandler conectionHandler = null;
 	private Socket s;
-	
-	public Conexion() {}
-	 
+
+	public Conexion() {
+	}
+
 	public Conexion(IVistaChat vistaChat) {
 		super();
 		this.vistaChat = vistaChat;
 	}
 
-	//RECEPTOR
-		public void Conectar(final int puerto) throws IOException {
-			
-			 ServerSocket ss = new ServerSocket(puerto);
+	// RECEPTOR
+	public void Conectar(final int puerto) throws IOException {
 
-		            Socket s = null;
-		              
-		            try 
-		            {
-		                		
-		            		s = ss.accept();		
-		            		
-		            		DataInputStream dis = new DataInputStream(s.getInputStream());
-		            		DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-		            		
-		            		this.socket = s;
-		            		this.messageManager = new MessageManager(s, dis, dos,this.vistaChat);
-		            		this.conectionHandler = new ConectionHandler(s, dis, dos,this.vistaChat);
-		            		
-		            		this.conectionHandler.start();
-		            		
-		            }
-		            catch (Exception e){
-		                e.printStackTrace();
-		            }
-		       
-		    }
+		ServerSocket ss = new ServerSocket(puerto);
 
-	
-		public void recibirMensajes() {
-			Socket s = this.messageManager.getSocket();
-			DataInputStream dis = null;
-			DataOutputStream dos = null;
-			try {
-				dis = new DataInputStream(s.getInputStream());
-				dos = new DataOutputStream(s.getOutputStream());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		Socket s = null;
 
-            this.conectionHandler = new ConectionHandler(s, dis, dos,this.vistaChat);
-            this.conectionHandler.start();
-		}
-		
-		public void conectar(String IP, int puerto) throws UnknownHostException, IOException {
-			
-			s = new Socket(IP,puerto);
+		try {
+
+			s = ss.accept();
+
 			DataInputStream dis = new DataInputStream(s.getInputStream());
-            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-			this.messageManager = new MessageManager(s,dis,dos,this.vistaChat);
-		}
-		
-		
-		public MessageManager getMessageManager() {
-			return this.messageManager;
+			DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+
+			this.socket = s;
+			this.messageManager = new MessageManager(s, dis, dos, this.vistaChat);
+			this.conectionHandler = new ConectionHandler(s, dis, dos, this.vistaChat);
+
+			this.conectionHandler.start();
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
-		public void setVista(IVistaChat v) {
-			this.vistaChat = v;
-		}
-		 
-		public Socket getsocket() {
-			return this.socket;
-		}
-		
-		public Socket getsocketEmisor() {
-			return this.s;
+	}
+
+	public void recibirMensajes() {
+		Socket s = this.messageManager.getSocket();
+		DataInputStream dis = null;
+		DataOutputStream dos = null;
+		try {
+			dis = new DataInputStream(s.getInputStream());
+			dos = new DataOutputStream(s.getOutputStream());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
-		public ConectionHandler getConectionHandler() {
-			return conectionHandler;
-		}
-		
-		
+		this.conectionHandler = new ConectionHandler(s, dis, dos, this.vistaChat);
+		this.conectionHandler.start();
+	}
+
+	public void conectar(String IP, int puerto) throws UnknownHostException, IOException {
+
+		s = new Socket(IP, puerto);
+		DataInputStream dis = new DataInputStream(s.getInputStream());
+		DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+		this.messageManager = new MessageManager(s, dis, dos, this.vistaChat);
+	}
+
+	public MessageManager getMessageManager() {
+		return this.messageManager;
+	}
+
+	public void setVista(IVistaChat v) {
+		this.vistaChat = v;
+	}
+
+	public Socket getsocket() {
+		return this.socket;
+	}
+
+	public Socket getsocketEmisor() {
+		return this.s;
+	}
+
+	public ConectionHandler getConectionHandler() {
+		return conectionHandler;
+	}
+
 }

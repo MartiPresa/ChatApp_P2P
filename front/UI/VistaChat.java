@@ -64,9 +64,6 @@ public class VistaChat extends JFrame implements IVistaChat{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblNewLabel = new JLabel("Ya estan en contacto! ");
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
-		
 		btnAbandonar = new JButton("Abandonar chat");
 		btnAbandonar.setActionCommand("ABANDONAR");
 		btnAbandonar.setBackground(new Color(95, 95, 95));
@@ -89,34 +86,34 @@ public class VistaChat extends JFrame implements IVistaChat{
 		jScrollPane1 = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-					.addGap(14)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(142)
-							.addComponent(lblNewLabel)
-							.addGap(29)
+							.addContainerGap()
 							.addComponent(btnAbandonar))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(txtIngreseTextoAqui)
-							.addGap(18)
-							.addComponent(btnEnviar)))
+							.addGap(14)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(txtIngreseTextoAqui, 320, 320, 320)
+									.addGap(18)
+									.addComponent(btnEnviar)))))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnAbandonar)
-						.addComponent(lblNewLabel))
-					.addGap(18)
-					.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(txtIngreseTextoAqui, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnEnviar)))
+						.addComponent(btnEnviar))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnAbandonar)
+					.addContainerGap())
 		);
 		
 		textArea = new JTextArea();
