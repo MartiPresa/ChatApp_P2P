@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 
 import back.Conexion;
 import back.MessageManager;
-import controladores.ControladorVistaChat;
+import controlador.ControladorVistaChat;
 
 public interface IVistaChat 
 {

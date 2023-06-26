@@ -20,7 +20,8 @@ import javax.swing.border.LineBorder;
 
 import back.Conexion;
 import back.MessageManager;
-import controladores.ControladorVistaChat;
+import controlador.ControladorVistaChat;
+
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;

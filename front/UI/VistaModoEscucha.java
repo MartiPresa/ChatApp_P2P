@@ -15,7 +15,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import back.Conexion;
-import controladores.ControladorModoEscucha;
+import controlador.ControladorModoEscucha;
 
 public class VistaModoEscucha extends JFrame implements IVistaModoEscucha {
 
